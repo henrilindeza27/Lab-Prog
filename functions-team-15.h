@@ -22,12 +22,12 @@ int ft_vetor_soma_metades(int vetor[N]);
 
 void ft_print_matriz(int **matriz, int linhas);
 int **ft_matriz_vetor(int vetor[N]);
-void ft_decompor(int vetor[N]);
+int	**ft_decompor(int vetor[N]);
 int *ft_ler_vetor(int flag);
 int **ft_vetor_baralhado(int vetor[N]);
 int **ft_multiplicar_matriz(int vetor[N], int vetor2[N]);
 int	*ft_vetor_ordenado_crescente(int vetor[N], int flag_simetrico);
-void ft_transposta(int **matriz);
+int **ft_transposta(int **matriz);
 void ft_free_matriz(int **matriz, int linhas);
 void ft_ajuda_cmd(void);
 int ft_menu();
@@ -44,7 +44,12 @@ void ft_option_four(int vetor[N]);
 void ft_option_five(int vetor[N]);
 void ft_option_six(int vetor[N]);
 void ft_option_eight(int vetor[N]);
+void ft_option_nine(int vetor[N]);
+void ft_option_ten(int vetor[N]);
+void ft_option_eleven(int vetor[N]);
+
 int **ft_save_to_matriz(int vetor[N], int vetor2[N], int vetor3[N], int a, int b);
+int ft_check_impar(int vetor[N]);
 
 
 #endif

@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
     
-	
+	ft_clear_screen();
 	option = ft_menu();
     while(option != 12)
 	{

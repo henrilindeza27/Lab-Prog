@@ -342,33 +342,63 @@ int **ft_vetor_baralhado(int vetor[N])
 	return matriz_tudo;
 }
 
-void ft_decompor(int vetor[N])
+int ft_check_impar(int vetor[N])
 {
 	int i = -1;
-	int fator = 2;
-	int num;
-
-	while(++i < N)
-	{
-		if(vetor[i] % 2 != 0)
-		{
-			num = vetor[i];
-			if(num < 10)
-				printf("0%d = 1 ", num);
-			else
-				printf("%d = 1 ", num);
-			while(num != 1)
-			{
-				while(num % fator != 0)
-					fator++;
-				printf("x %d ", fator);
-				num /= fator;
-				fator = 2;
-			}
-			printf("\n");
-		}
-	}
+	int impar = 0;
+	while (++i < N)
+		if (vetor[i] % 2 != 0)
+			impar++;
+	return impar;
 }
+int **ft_decompor(int vetor[N])
+{
+    int k = -1;
+    int fator = 2;
+    int num;
+    int **decomposto;
+    int impar = ft_check_impar(vetor);
+
+    decomposto = (int **)malloc((impar + 1) * sizeof(int *));
+    if (!decomposto)
+        return NULL;
+
+    decomposto[impar] = (int *)malloc(N * sizeof(int));
+    int impar_index = 0;
+
+    for (int i = 0; i < N; i++)
+    {
+        if (vetor[i] % 2 != 0)
+        {
+            decomposto[impar][impar_index++] = vetor[i];
+
+            decomposto[++k] = (int *)malloc(N * sizeof(int));
+            decomposto[k][0] = vetor[i];
+            decomposto[k][1] = 1;
+            num = vetor[i];
+            int j = 2;
+
+            while (num != 1)
+            {
+                while (num % fator != 0)
+                    fator++;
+                decomposto[k][j++] = fator;
+                num /= fator;
+                fator = 2;
+            }
+
+            while (j < N)
+                decomposto[k][j++] = 0;
+        }
+    }
+
+    while (impar_index < N)
+        decomposto[impar][impar_index++] = 0;
+
+    return decomposto;
+}
+
+
 
 int **ft_multiplicar_matriz(int vetor[N], int vetor2[N])
 {
@@ -404,20 +434,18 @@ int **ft_multiplicar_matriz(int vetor[N], int vetor2[N])
 	return matriz_final;
 }
 
-void ft_transposta(int **matriz)
+
+int **ft_transposta(int **matriz)
 {
-	int matriz_transposta[N][N] = {};
+    int **matriz_transposta = (int **)malloc(N * sizeof(int *));
+    for (int i = 0; i < N; i++)
+    {
+        matriz_transposta[i] = (int *)malloc(N * sizeof(int));
+		for (int j = 0; j < N; j++)
+            matriz_transposta[i][j] = matriz[j][i];
+    }
 
-	for(int i = 0; i < N; i++)
-		for(int j = 0; j < N; j++)
-			matriz_transposta[j][i] = matriz[i][j];
-
-	for(int i = 0; i < N; i++)
-	{	
-		for(int j = 0; j < N; j++)
-			printf("%d ",matriz_transposta[i][j]);
-		puts("");
-	}
+    return matriz_transposta; 
 }
 
 void ft_ajuda(void)
@@ -605,9 +633,15 @@ void ft_exec_menu(int opcao, int vetor[N])
 	case 8:
 		ft_option_eight(vetor);
 		break;
-
-
-	
+	case 9:
+		ft_option_nine(vetor);
+		break;
+	case 10:
+		ft_option_ten(vetor);
+		break;
+	case 11:
+		ft_option_eleven(vetor);
+		break;
 	default:
 		break;
 	}
@@ -615,25 +649,27 @@ void ft_exec_menu(int opcao, int vetor[N])
 	ft_wait_enter();
 }
 
-void ft_wait_enter()
+void ft_wait_enter() 
 {
-	char *pos, av[5] = {};
-	int enter = 0;
-	do
-	{
-		printf("\nPressione a tecla ENTER para avançar");
-		fgets(av, 5, stdin);
-		pos = strchr(av, '\n');
-		*pos = '\0';
-
-		if ((strcmp(av, "\0") == 0))
+    char av[5] = {};
+    int enter = 0;
+    
+    do {
+        printf("\nPressione a tecla ENTER para avançar");
+        fgets(av, sizeof(av), stdin);
+        
+        if (strchr(av, '\n') != NULL) 
 		{
-			enter = 1;
-			ft_clear_screen();
-		}
-		else
-			enter = 0;
-	} while (enter == 0);
+            if (strcmp(av, "\n") == 0) 
+			{
+                enter = 1; 
+                ft_clear_screen();
+            } 
+        } 
+		else 
+            while (getchar() != '\n');
+        
+    } while (enter == 0);
 }
 
 void ft_clear_screen(void)
@@ -641,12 +677,35 @@ void ft_clear_screen(void)
 	system("clear");
 }
 
+int ft_check_digits(int *array, int length)
+{
+	int max_digits = 1;
+	for (int i = 0; i < length; i++)
+	{
+		int num = array[i];
+		int digits = 0;
+		while (num > 0)
+		{
+			num /= 10;
+			digits++;
+		}
+		if (digits > max_digits)
+			max_digits = digits;
+	}
+	return max_digits * length; // Total width for row with max digit count
+}
+
+
 int ft_check_2digits(int vetor[N], int size)
 {
 	int c = 0;
 	for(int i = 0; i < size; i++)
-		if(vetor[i] >= 10)
+	{	
+		if(vetor[i] >= 10 && vetor[i] < 100)
 			c++;
+		else if(vetor[i] >= 100)
+			c += 2;
+	}
 	return c;
 }
 
@@ -793,6 +852,7 @@ void ft_option_four(int vetor[N])
 	ft_spaces(td);
 	printf(" ║\n");
 	printf("╚══════════════════════════════════════════════════════════════════════════╝\n");
+	free(vetor_simetrico);
 
 }
 
@@ -885,4 +945,157 @@ void ft_option_eight(int vetor[N])
 
 	ft_free_matriz(vetores, 5);
 
+}
+
+void ft_option_nine(int vetor[N])
+{
+	int **valores = ft_decompor(vetor);
+	int impares = ft_check_impar(vetor);
+
+	int td = 55 - (37 + ft_check_2digits(vetor, N));
+
+	if(!valores)
+		return;
+	ft_clear_screen();
+	printf("╔════════════════════════════════════════════════════════╗\n");
+    printf("║               NÚMEROS IMPARES DECOMPOSTOS              ║\n");
+	printf("╠════════════════════════════════════════════════════════╣\n");
+	printf("║                                                        ║\n");
+	printf("║  ↓ VETOR INCIAL ↓                                      ║\n");
+	printf("║ ");
+	ft_printf_vetor(vetor, N, 0);
+	ft_spaces(td);
+	printf(" ║\n");
+	printf("║                                                        ║\n");
+	printf("║  ↓ VALORES IMPARES DO VETOR ↓                          ║\n");
+	printf("║ "); 
+	ft_printf_vetor(valores[impares], impares, 0);
+	td = 53 - (((impares * 2) - 1) + ft_check_2digits(valores[impares], impares));
+	ft_spaces(td);
+	printf(" ║\n");
+	printf("║                                                        ║\n");
+	printf("║  ↓ VALORES DECOMPOSTOS ↓                               ║\n");
+	for(int i = 0; i < impares; i++)
+	{
+		printf("║ ");
+		if(valores[i][0] > 10)
+			printf("%d = 1", valores[i][0]);
+		else
+			printf("0%d = 1", valores[i][0]);
+		int j = 2;
+		while (valores[i][j] != 0)
+			printf(" x %d", valores[i][j++]);
+		if(j == 3)
+		{	
+			if(!ft_check_2digits(valores[i], N))
+				td = 55 - (10 + (ft_check_2digits(valores[i], N)) + 1);
+			else
+				td = 55 - (10 + (ft_check_2digits(valores[i], N)));
+		}
+		else if (j == 2)
+			td = 55 - 7;
+		else
+			td = 55 - (15 + (ft_check_2digits(valores[i], N)));
+		
+		ft_spaces(td);
+		printf(" ║\n");
+		printf("║                                                        ║\n");
+	}
+	printf("╚════════════════════════════════════════════════════════╝\n");
+	ft_free_matriz(valores, impares+1);
+}
+
+void ft_option_ten(int vetor[N])
+{
+	int *vetor_ordenado = ft_vetor_ordenado_crescente(vetor, 0);
+	if (!vetor_ordenado)
+		return;
+
+	int **matriz = ft_multiplicar_matriz(vetor, vetor_ordenado);
+	if (!matriz)
+		return;
+
+	int td = 108 - (37 + ft_check_2digits(vetor, N));
+
+	ft_clear_screen();
+	printf("╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════╗\n");
+	printf("║                                            MATRIZ 18X18                                                     ║\n");
+	printf("╠═════════════════════════════════════════════════════════════════════════════════════════════════════════════╣\n");
+	printf("║                                                                                                             ║\n");
+	printf("║  ↓ VETOR INCIAL ↓                                                                                           ║\n");
+	printf("║ ");
+	ft_printf_vetor(vetor, N, 0);
+	ft_spaces(td);
+	printf(" ║\n");
+	printf("║                                                                                                             ║\n");
+	printf("║  ↓ VETOR ORDENADO ↓                                                                                         ║\n");
+	printf("║ ");
+	ft_printf_vetor(vetor_ordenado, N, 0);
+	ft_spaces(td);
+	printf(" ║\n");
+	printf("║                                                                                                             ║\n");
+	printf("║  ↓ MATRIZ ORIGINARIA DOS VETORES ↓                                                                          ║\n");
+	printf("║                                                                                                             ║\n");
+	for (int i = 0; i < N; i++)
+	{
+		printf("║ ");
+		for (int j = 0; j < N; j++)
+			printf("%3d ", matriz[i][j]); 
+		ft_spaces(35);
+		printf(" ║\n");
+	}
+	printf("║                                                                                                             ║\n");
+	printf("╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════╝\n");
+
+	ft_free_matriz(matriz, N);
+	free(vetor_ordenado);
+}
+
+
+void ft_option_eleven(int vetor[N])
+{
+	int *vetor_ordenado = ft_vetor_ordenado_crescente(vetor, 0);
+	if (!vetor_ordenado)
+		return;
+
+	int **matriz = ft_multiplicar_matriz(vetor, vetor_ordenado);
+	if (!matriz)
+		return;
+	int **transposta = ft_transposta(matriz);
+
+	int td = 108 - (37 + ft_check_2digits(vetor, N));
+
+	ft_clear_screen();
+	printf("╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════╗\n");
+	printf("║                                          MATRIZ TRANSPOSTA                                                  ║\n");
+	printf("╠═════════════════════════════════════════════════════════════════════════════════════════════════════════════╣\n");
+	printf("║                                                                                                             ║\n");
+	printf("║  ↓ MATRIZ ↓                                                                                                 ║\n");
+	printf("║                                                                                                             ║\n");
+	for (int i = 0; i < N; i++)
+	{
+		printf("║ ");
+		for (int j = 0; j < N; j++)
+			printf("%3d ", matriz[i][j]); 
+		ft_spaces(35);
+		printf(" ║\n");
+	}
+	printf("║                                                                                                             ║\n");
+	printf("║                                                                                                             ║\n");
+	printf("║  ↓ MATRIZ TRANSPOSTA ↓                                                                                      ║\n");
+	printf("║                                                                                                             ║\n");
+	for (int i = 0; i < N; i++)
+	{
+		printf("║ ");
+		for (int j = 0; j < N; j++)
+			printf("%3d ", transposta[i][j]); 
+		ft_spaces(35);
+		printf(" ║\n");
+	}
+	printf("║                                                                                                             ║\n");
+	printf("╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════╝\n");
+
+	ft_free_matriz(matriz, N);
+	ft_free_matriz(transposta, N);
+	free(vetor_ordenado);
 }
