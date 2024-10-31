@@ -27,8 +27,6 @@ int	main(int argc, char **argv)
     while(option != 12)
 	{
 		ft_exec_menu(option, vetor);
-		
-
 		option = ft_menu();
 	}
     
