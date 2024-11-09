@@ -12,6 +12,8 @@ int	main(int argc, char **argv)
             ft_clear_screen();
 			ft_ajuda_cmd();
 		}
+		else
+			printf("Erro flag não reconhecida\n");
 		return (0);
 	}
 

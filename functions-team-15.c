@@ -1,5 +1,16 @@
 #include "functions-team-15.h"
 
+
+
+/**
+ * @brief Exibe o menu principal com várias opções e solicita ao usuário que selecione uma.
+ *
+ * Esta função imprime o menu principal com várias opções para o usuário escolher.
+ * Em seguida, lê a entrada do usuário e a valida para garantir que esteja dentro do intervalo aceitável.
+ * Se a entrada for inválida, o usuário é solicitado a inserir uma opção válida.
+ *
+ * @return A opção de menu selecionada (um inteiro entre 1 e 12).
+ */
 int ft_menu()
 {
     int op;
@@ -24,12 +35,21 @@ int ft_menu()
     printf("Selecione a opção que deseja --> ");
     while (scanf("%d", &op) <= 0 || op < 1 || op > 12)
     {
-        printf(" Opção inválida, por favor digite uma opção válida -> ");
+        printf("Opção inválida, por favor digite uma opção válida -> ");
         ft_clean_input();
     }
     return op;
 }
 
+/**
+ * Gera uma matriz 4xN onde cada linha é uma cópia do vetor fornecido.
+ *
+ * @param vetor Array de inteiros de tamanho `N`, cujos elementos serão
+ *              copiados para cada linha da matriz.
+ * @return Ponteiro para a matriz 4xN (int**), ou NULL em caso de erro de alocação.
+ *
+ * @note A matriz retornada é alocada dinamicamente e deve ser liberada após o uso.
+ */
 int **ft_matriz_vetor(int vetor[N])
 {
     int **matriz = (int **)malloc(4 * sizeof(int *));
@@ -57,6 +77,18 @@ int **ft_matriz_vetor(int vetor[N])
 	return matriz;
 }
 
+
+/**
+ * @brief Calcula a mediana de um array de inteiros.
+ *
+ * Esta função recebe um array de inteiros e calcula sua mediana.
+ * Primeiro, ordena o array em ordem crescente e depois encontra o valor
+ * da mediana. Se o número de elementos no array for par, a mediana é
+ * calculada como a média dos dois elementos do meio.
+ *
+ * @param vetor O array de inteiros para o qual a mediana será calculada.
+ * @return O valor da mediana do array como um float.
+ */
 float	ft_mediana(int vetor[N])
 {
 	float	mediana;
@@ -69,6 +101,16 @@ float	ft_mediana(int vetor[N])
 	return mediana;
 }
 
+/**
+ * @brief Ordena um array em ordem crescente.
+ *
+ * Esta função recebe um array de inteiros e uma flag indicando se o array deve ser tratado como simétrico.
+ * Ela retorna um novo array com os elementos ordenados em ordem crescente.
+ *
+ * @param vetor O array de inteiros a ser ordenado.
+ * @param flag_simetrico Se diferente de zero, os elementos do array são negados antes da ordenação.
+ * @return Um ponteiro para o novo array alocado com os elementos ordenados, ou NULL se a alocação de memória falhar.
+ */
 int	*ft_vetor_ordenado_crescente(int vetor[N], int flag_simetrico)
 {
 	int	*vetor_ordenado;
@@ -105,6 +147,15 @@ int	*ft_vetor_ordenado_crescente(int vetor[N], int flag_simetrico)
 }
 
 
+/**
+ * @brief Cria um vetor simétrico a partir do vetor fornecido.
+ *
+ * Esta função recebe um vetor de entrada e gera um vetor simétrico
+ * ordenando os elementos em ordem crescente.
+ *
+ * @param vetor O vetor de entrada de tamanho N.
+ * @return Um ponteiro para o vetor simétrico recém-criado.
+ */
 int	*ft_vetor_simetrico(int vetor[N])
 {
 	int	*vetor_simetrico = ft_vetor_ordenado_crescente(vetor, 1);
@@ -114,6 +165,20 @@ int	*ft_vetor_simetrico(int vetor[N])
 
 
 
+/**
+ * @brief Encontra o maior número no vetor que é divisível por 5 e maior que 2
+ *
+ * Esta função itera pelo vetor de entrada `vetor` de tamanho `N`, conta quantos elementos
+ * são maiores que 2 e divisíveis por 5, e armazena esses elementos em um vetor alocado dinamicamente e após 
+ * isso imprime o `vetor` e liberta a memória dele
+ *
+ * @param vetor Um vetor de inteiros de tamanho `N`.
+ * @return Um inteiro calculado como o dobro da contagem de elementos maiores que 2 e divisíveis por 5,
+ *         mais a contagem de elementos de dois dígitos entre eles.
+ * 
+ * @note A função retorna um valor inteiro para garantir que a apresentação do `vetor` apareça sempre formatado 
+ * 		 indepentemente do tamanho.
+ */
 int ft_maior_divisivel(int vetor[N])
 {
 	int c = 0;
@@ -144,15 +209,26 @@ int ft_maior_divisivel(int vetor[N])
 	free(vetor_valores);
 
 	return ((c*2) + two_digits);
-
 }
 
 
+/**
+ * @brief Soma os elementos correspondentes das duas metades do array de entrada.
+ *
+ * Esta função recebe um array de inteiros e soma os elementos correspondentes
+ * das suas duas metades. O resultado é armazenado em um array alocado dinamicamente.
+ *
+ * @param vetor O array de entrada de inteiros com tamanho N.
+ * @return A quantidade de números de dois dígitos no array resultante.
+ *
+ * @note A função retorna um valor inteiro para garantir que a apresentação do `vetor` apareça sempre formatado 
+ * 		 indepentemente do tamanho.
+ */
 int	ft_vetor_soma_metades(int vetor[N])
 {
 	int	i = -1;
 	int	*vetor_metade;
-    int i_metade = N/2;
+	int i_metade = N/2;
 	int two_digits;
 
 	vetor_metade = (int *)malloc(sizeof(int) * (i_metade));
@@ -172,6 +248,17 @@ int	ft_vetor_soma_metades(int vetor[N])
 	return two_digits;
 }
 
+/**
+ * @brief Lê um `vetor` de tamanho `N`
+ *
+ * Esta função recebe uma `flag` para destinguir da leitura do `vetor inicial`  para 
+ * o `novo vetor`. Após isso lê os valores e guarda esses elementos num `vetor` alocado dinamicamente
+ *
+ * @param flag Um valor inteiro (1 ou 0) 
+ * @return Um ponteiro para o `vetor` lido
+ *
+ * @note A função retorna NULL caso a alocação corra mal.
+ */
 int *ft_ler_vetor(int flag)
 {
 	int *vetor = (int *)malloc(sizeof(int) * N);
@@ -199,6 +286,18 @@ int *ft_ler_vetor(int flag)
 	return vetor;
 }
 
+/**
+ * @brief Soma os valores presentes em um `vetor` de `N` elementos
+ *
+ * A função precorre o `vetor` e somar todos os elementos, têm como propósito
+ * auxiliar a função `ft_vetor_baralhado`.
+ *
+ * @param vetor Um `array` de tamnho `N` composto por 0's e 1's
+ * @return `1` caso todos os valores presentes no `vetor` sejam `1's` | 
+ * 		   `0` caso ainda exista `0's` no `vetor`
+ *
+ * @note Está função auxilia a verificar se todas as posições foram tomadas como 1.
+ */
 int ft_somar_vetor(int vetor[N])
 {
 	int i = -1;
@@ -211,24 +310,46 @@ int ft_somar_vetor(int vetor[N])
 
 }
 
+
+
+/**
+ * @brief Salva o conteúdo necessário em uma `matriz` para apresentar na tela.
+ *
+ * Esta função cria uma matriz e a preenche com o conteúdo de três vetores.
+ * A matriz é alocada dinamicamente e deve ser liberada pelo chamador para evitar vazamentos de memória.
+ *
+ * @param vetor O `vetor` de entrada de tamanho N.
+ * @param vetor2 O `vetor baralhado` que reune metade do `vetor incial` e metade do `novo vetor`.
+ * @param vetor3 O `novo vetor` lido.
+ * @param a Um valor inteiro que corresponde a metade usada do `vetor inicial`.
+ * @param b Um valor inteiro que corresponde a metade usada do `novo vetor`.
+ * @return Um ponteiro para a matriz alocada dinamicamente.
+ *
+ * @note Sendo que a informação que irá guardar é o `vetor inicial`, o `vetor baralhado` 
+ * 		 e as metades que foram usadas para a criação do `vetor baralhado` usando uma 
+ * 		 metade do `vetor inicial` e do `novo vetor`.
+ * 
+ * @note O valor `a` e `b` correspondem a metade que foi usada de cada vetor respetivamente
+ * 		 `0` se foi usada a 1º metaded e `8` se foi usada a 2º metade
+ */
 int **ft_save_to_matriz(int vetor[N], int vetor2[N], int vetor3[N], int a, int b)
 {
 	int **matriz = (int **)malloc(5 * sizeof(int *));
 	int flag = 1, flag2 = 0;
 	int x = a, y = b;
 
-	for(int i = 0; i < 3; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		matriz[i] = (int *)malloc(N * sizeof(int));
-		for(int j = 0; j < N; j++)
+		for (int j = 0; j < N; j++)
 		{
-			if(flag == 1)
+			if (flag == 1)
 				matriz[i][j] = vetor[j];
-			else if(flag == 2)
+			else if (flag == 2)
 				matriz[i][j] = vetor2[j];
 			else
 			{
-				if(!flag2)
+				if (!flag2)
 				{
 					matriz[i][j++] = a;
 					matriz[i][j] = b;
@@ -241,42 +362,40 @@ int **ft_save_to_matriz(int vetor[N], int vetor2[N], int vetor3[N], int a, int b
 		flag++;
 	}
 
-	for(int i = 3; i < 5; i++)
+	for (int i = 3; i < 5; i++)
 	{
 		matriz[i] = (int *)malloc(N * sizeof(int));
-		for(int j = 0; j < N; j++)
+		for (int j = 0; j < N; j++)
 		{
-			if(i == 4)
+			if (i == 4)
 			{
-
-				if(b == 0)
+				if (b == 0)
 				{
-					if(y < 9)
+					if (y < 9)
 						matriz[i][j] = vetor3[y++];
 					else
 						matriz[i][j] = 0;
 				}
 				else
 				{
-					if(y < 17)
+					if (y < 17)
 						matriz[i][j] = vetor3[++y];
 					else
 						matriz[i][j] = 0;
 				}
-
 			}
 			else
 			{
-				if(a == 8)
+				if (a == 8)
 				{
-					if(x < 17)
+					if (x < 17)
 						matriz[i][j] = vetor[++x];
 					else
 						matriz[i][j] = 0;
 				}
 				else
 				{
-					if(x < 9)
+					if (x < 9)
 						matriz[i][j] = vetor[x++];
 					else
 						matriz[i][j] = 0;
@@ -308,7 +427,7 @@ int **ft_vetor_baralhado(int vetor[N])
 	a = i;
 	b = j;
 
-		if(i < 8)
+	if(i < 8)
 		while(i <= 8)	
 			vetor_tmp[++k] = vetor[i++];
 	else
@@ -342,6 +461,14 @@ int **ft_vetor_baralhado(int vetor[N])
 	return matriz_tudo;
 }
 
+/**
+ * @brief Verifica a quantidade de números ímpares em um `vetor`.
+ *
+ * Esta função percorre um `vetor de inteiros` e conta quantos deles são ímpares.
+ *
+ * @param vetor Um vetor de inteiros de tamanho `N`.
+ * @return A quantidade de números `ímpares` no vetor.
+ */
 int ft_check_impar(int vetor[N])
 {
 	int i = -1;
@@ -351,6 +478,7 @@ int ft_check_impar(int vetor[N])
 			impar++;
 	return impar;
 }
+
 int **ft_decompor(int vetor[N])
 {
     int k = -1;
@@ -400,6 +528,18 @@ int **ft_decompor(int vetor[N])
 
 
 
+/**
+ * @brief Multiplica dois vetores para formar uma matriz.
+ *
+ * Esta função recebe `dois vetores` de tamanho `N` e os multiplica para formar uma `matriz`.
+ * O `primeiro vetor` é tratado como uma matriz `1xN` e o `segundo vetor` é tratado como uma matriz `Nx1`.
+ * A matriz resultante é uma matriz `NxN` onde cada elemento é o produto dos elementos correspondentes
+ * dos dois vetores de entrada.
+ *
+ * @param vetor O `primeiro vetor` de entrada de tamanho `N`.
+ * @param vetor2 O `segundo vetor` de entrada de tamanho `N`.
+ * @return Um ponteiro para a matriz NxN resultante. Retorna `NULL` se a alocação de memória falhar.
+ */
 int **ft_multiplicar_matriz(int vetor[N], int vetor2[N])
 {
 	int matriz[1][N] = {};
@@ -435,6 +575,17 @@ int **ft_multiplicar_matriz(int vetor[N], int vetor2[N])
 }
 
 
+/**
+ * @brief Transpõe uma `matriz quadrada` fornecida.
+ *
+ * Esta função recebe uma `matriz quadrada` `(NxN)` como entrada e retorna sua transposta.
+ * A transposta de uma matriz é obtida trocando linhas por colunas.
+ *
+ * @param matriz A `matriz quadrada` de entrada a ser transposta.
+ * @return Uma nova matriz que é a transposta da matriz de entrada.
+ *
+ * @note O chamador é responsável por liberar a memória alocada para a matriz transposta.
+ */
 int **ft_transposta(int **matriz)
 {
     int **matriz_transposta = (int **)malloc(N * sizeof(int *));
@@ -535,7 +686,7 @@ void ft_ajuda(void)
 void ft_ajuda_cmd()
 {
     printf("╔═══════════════════════════════════════════════════════════════════╗\n");
-    printf("╠════════════════════════════  AJUDA BÁSICA  ═══════════════════════╣\n");
+    printf("╠═══════════════════════  AJUDA BÁSICA  ════════════════════════════╣\n");
     printf("║  [COMO EXECUTAR O PROGRAMA]                                       ║\n");
     printf("║  1. Execute o programa compilado digitando:                       ║\n");
     printf("║     $ ./lp-team-15                                                ║\n");
@@ -676,25 +827,6 @@ void ft_clear_screen(void)
 {
 	system("clear");
 }
-
-int ft_check_digits(int *array, int length)
-{
-	int max_digits = 1;
-	for (int i = 0; i < length; i++)
-	{
-		int num = array[i];
-		int digits = 0;
-		while (num > 0)
-		{
-			num /= 10;
-			digits++;
-		}
-		if (digits > max_digits)
-			max_digits = digits;
-	}
-	return max_digits * length; // Total width for row with max digit count
-}
-
 
 int ft_check_2digits(int vetor[N], int size)
 {
@@ -873,7 +1005,7 @@ void ft_option_five(int vetor[N])
 	printf("║                                                        ║\n");
 	printf("║ ↓ VALORES MAIORES QUE 2 E DIVISIVEIS POR 5 ↓           ║\n");
 	printf("║ ");
-	td = 54 - (ft_maior_divisivel(vetor)); //dar return ao c
+	td = 54 - (ft_maior_divisivel(vetor)); 
 	ft_spaces(td);
 	printf(" ║\n");
 	printf("╚════════════════════════════════════════════════════════╝\n");

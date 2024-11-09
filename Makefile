@@ -13,7 +13,7 @@ all: $(NAME_PROJECT)
 
 $(NAME_PROJECT): $(OBJS)
 
-	@cc $(FLAGS) $(OBJS) -o $(NAME_PROJECT) -lm
+	@cc $(FLAGS) $(OBJS) -o $(NAME_PROJECT) -lm 
 	@echo  "$(CYAN)Build ($(NAME_PROJECT)): $(GREEN)[Success]$(RESET)"
 
 %.o: %.c
