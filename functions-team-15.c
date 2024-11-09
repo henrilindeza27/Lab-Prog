@@ -1,7 +1,5 @@
 #include "functions-team-15.h"
 
-
-
 /**
  * @brief Exibe o menu principal com várias opções e solicita ao usuário que selecione uma.
  *
@@ -11,7 +9,7 @@
  *
  * @return A opção de menu selecionada (um inteiro entre 1 e 12).
  */
-int ft_menu()
+int ft_menu(void)
 {
     int op;
     printf("╔═════════════════════════════════════════════════════════╗\n");
@@ -38,7 +36,7 @@ int ft_menu()
         printf("Opção inválida, por favor digite uma opção válida -> ");
         ft_clean_input();
     }
-    return op;
+    return (op);
 }
 
 /**
@@ -57,7 +55,7 @@ int **ft_matriz_vetor(int vetor[N])
     if(!matriz)
     {
         printf("Erro na alocação das linhas da matriz!\n");
-		return NULL;
+		return (NULL);
     }
 
     for(int i = 0; i < 4 ; i++)
@@ -66,7 +64,7 @@ int **ft_matriz_vetor(int vetor[N])
         if(!matriz[i])
         {
             printf("Erro na alocação das colunas da matriz!\n");
-            return NULL;
+            return (NULL);
         }
     }
 
@@ -74,7 +72,7 @@ int **ft_matriz_vetor(int vetor[N])
         for(int z = 0; z < N; z++)
             matriz[j][z] = vetor[z];
     
-	return matriz;
+	return (matriz);
 }
 
 
@@ -98,7 +96,8 @@ float	ft_mediana(int vetor[N])
 	vetor_ordenado = ft_vetor_ordenado_crescente(vetor, 0);
 	index = N / 2;
 	mediana = ((float)vetor_ordenado[index - 1] + (float)vetor_ordenado[index]) / 2;
-	return mediana;
+
+	return (mediana);
 }
 
 /**
@@ -119,11 +118,13 @@ int	*ft_vetor_ordenado_crescente(int vetor[N], int flag_simetrico)
 
 	i = -1;
 	vetor_ordenado = (int *)malloc(sizeof(int) * N);
+
 	if (!vetor_ordenado)
 	{
 		printf("Erro na alocação do vetor_ordenado!\n");
 		return (NULL);
 	}
+
 	while (++i < N)
 	{
 		if (flag_simetrico)
@@ -131,6 +132,7 @@ int	*ft_vetor_ordenado_crescente(int vetor[N], int flag_simetrico)
 		else
 			vetor_ordenado[i] = vetor[i];
 	}
+
 	for (int i = 0; i < N; i++)
 	{
 		for (int j = 0; j < N; j++)
@@ -143,6 +145,7 @@ int	*ft_vetor_ordenado_crescente(int vetor[N], int flag_simetrico)
 			}
 		}
 	}
+
 	return (vetor_ordenado);
 }
 
@@ -160,7 +163,7 @@ int	*ft_vetor_simetrico(int vetor[N])
 {
 	int	*vetor_simetrico = ft_vetor_ordenado_crescente(vetor, 1);
 
-	return vetor_simetrico;
+	return (vetor_simetrico);
 }
 
 
@@ -195,7 +198,7 @@ int ft_maior_divisivel(int vetor[N])
 	if(!vetor_valores)
 	{
 		printf("Erro na alocação do vetor_valores!\n");
-		return 0;
+		return (0);
 	}
 
 	for(int i = 0; i < N; i++)
@@ -235,7 +238,7 @@ int	ft_vetor_soma_metades(int vetor[N])
 	if (!vetor_metade)
 	{
 		printf("Erro na alocação do vetor_metade!\n");
-		return 0;
+		return (0);
 	}
 	while (++i < i_metade)
 		vetor_metade[i] = vetor[i] + vetor[i_metade + i];
@@ -245,7 +248,7 @@ int	ft_vetor_soma_metades(int vetor[N])
 	ft_printf_vetor(vetor_metade, N / 2, 0);
 	free(vetor_metade);
 
-	return two_digits;
+	return (two_digits);
 }
 
 /**
@@ -267,7 +270,7 @@ int *ft_ler_vetor(int flag)
 	if(!vetor)
     {
         printf("Erro na alocação do vetor!\n");
-		return NULL;
+		return (NULL);
     }
 
 	if(flag)
@@ -283,7 +286,7 @@ int *ft_ler_vetor(int flag)
         }
     }
 
-	return vetor;
+	return (vetor);
 }
 
 /**
@@ -305,8 +308,8 @@ int ft_somar_vetor(int vetor[N])
 	while(++i < N)
 		somatorio += vetor[i];
 	if(somatorio == 18)
-		return 1;
-	return 0;
+		return (1);
+	return (0);
 
 }
 
@@ -318,26 +321,26 @@ int ft_somar_vetor(int vetor[N])
  * A matriz é alocada dinamicamente e deve ser liberada pelo chamador para evitar vazamentos de memória.
  *
  * @param vetor O `vetor` de entrada de tamanho N.
- * @param vetor2 O `vetor baralhado` que reune metade do `vetor incial` e metade do `novo vetor`.
- * @param vetor3 O `novo vetor` lido.
+ * @param vetor_baralhado O `vetor baralhado` que reune metade do `vetor incial` e metade do `novo vetor`.
+ * @param novo_vetor O `novo vetor` lido.
  * @param a Um valor inteiro que corresponde a metade usada do `vetor inicial`.
  * @param b Um valor inteiro que corresponde a metade usada do `novo vetor`.
  * @return Um ponteiro para a matriz alocada dinamicamente.
  *
- * @note Sendo que a informação que irá guardar é o `vetor inicial`, o `vetor baralhado` 
+ * @note Sendo que a informação que irá guardar é o `vetor inicial`,o `novo vetor`, o `vetor baralhado` 
  * 		 e as metades que foram usadas para a criação do `vetor baralhado` usando uma 
  * 		 metade do `vetor inicial` e do `novo vetor`.
  * 
  * @note O valor `a` e `b` correspondem a metade que foi usada de cada vetor respetivamente
- * 		 `0` se foi usada a `1º metaded` e `8` se foi usada a `2º metade`
+ * 		 `0` se foi usada a `1º metade` e `8` se foi usada a `2º metade`
  */
-int **ft_save_to_matriz(int vetor[N], int vetor2[N], int vetor3[N], int a, int b)
+int **ft_save_to_matriz(int vetor[N], int vetor_baralhado[N], int novo_vetor[N], int a, int b)
 {
-	int **matriz = (int **)malloc(5 * sizeof(int *));
+	int **matriz = (int **)malloc(6 * sizeof(int *));
 	int flag = 1, flag2 = 0;
 	int x = a, y = b;
 
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		matriz[i] = (int *)malloc(N * sizeof(int));
 		for (int j = 0; j < N; j++)
@@ -345,7 +348,9 @@ int **ft_save_to_matriz(int vetor[N], int vetor2[N], int vetor3[N], int a, int b
 			if (flag == 1)
 				matriz[i][j] = vetor[j];
 			else if (flag == 2)
-				matriz[i][j] = vetor2[j];
+				matriz[i][j] = vetor_baralhado[j];
+			else if(flag == 3)
+				matriz[i][j] = novo_vetor[j];
 			else
 			{
 				if (!flag2)
@@ -361,24 +366,24 @@ int **ft_save_to_matriz(int vetor[N], int vetor2[N], int vetor3[N], int a, int b
 		flag++;
 	}
 
-	for (int i = 3; i < 5; i++)
+	for (int i = 4; i < 6; i++)
 	{
 		matriz[i] = (int *)malloc(N * sizeof(int));
 		for (int j = 0; j < N; j++)
 		{
-			if (i == 4)
+			if (i == 5)
 			{
 				if (b == 0)
 				{
 					if (y < 9)
-						matriz[i][j] = vetor3[y++];
+						matriz[i][j] = novo_vetor[y++];
 					else
 						matriz[i][j] = 0;
 				}
 				else
 				{
 					if (y < 17)
-						matriz[i][j] = vetor3[++y];
+						matriz[i][j] = novo_vetor[++y];
 					else
 						matriz[i][j] = 0;
 				}
@@ -403,7 +408,7 @@ int **ft_save_to_matriz(int vetor[N], int vetor2[N], int vetor3[N], int a, int b
 		}
 	}
 
-	return matriz;
+	return (matriz);
 }
 
 /**
@@ -426,7 +431,7 @@ int **ft_vetor_baralhado(int vetor[N])
 	if(!vetor_baralhado)
     {
         printf("Erro na alocação do vetor!\n");
-		return NULL;
+		return (NULL);
     }
 	srand(time(NULL));
 
@@ -465,8 +470,8 @@ int **ft_vetor_baralhado(int vetor[N])
 	free(vetor_baralhado);
 
 	if(!matriz_tudo)
-		return NULL;
-	return matriz_tudo;
+		return (NULL);
+	return (matriz_tudo);
 }
 
 /**
@@ -484,7 +489,7 @@ int ft_check_impar(int vetor[N])
 	while (++i < N)
 		if (vetor[i] % 2 != 0)
 			impar++;
-	return impar;
+	return (impar);
 }
 
 /**
@@ -512,7 +517,7 @@ int **ft_decompor(int vetor[N])
 
     decomposto = (int **)malloc((impar + 1) * sizeof(int *));
     if (!decomposto)
-        return NULL;
+        return (NULL);
 
     decomposto[impar] = (int *)malloc(N * sizeof(int));
     int impar_index = 0;
@@ -546,7 +551,7 @@ int **ft_decompor(int vetor[N])
     while (impar_index < N)
         decomposto[impar][impar_index++] = 0;
 
-    return decomposto;
+    return (decomposto);
 }
 
 
@@ -572,7 +577,7 @@ int **ft_multiplicar_matriz(int vetor[N], int vetor2[N])
 	if(!matriz_final)
     {
         printf("Erro na alocação das linhas da matriz_final!\n");
-		return NULL;
+		return (NULL);
     }
 	for(int i = 0; i < N ; i++)
     {
@@ -580,7 +585,7 @@ int **ft_multiplicar_matriz(int vetor[N], int vetor2[N])
         if(!matriz_final[i])
         {
             printf("Erro na alocação das colunas da matriz_final!\n");
-            return NULL;
+            return (NULL);
         }
     }
 
@@ -619,9 +624,37 @@ int **ft_transposta(int **matriz)
             matriz_transposta[i][j] = matriz[j][i];
     }
 
-    return matriz_transposta; 
+    return (matriz_transposta); 
 }
 
+/**
+ * @brief Exibe o menu de ajuda do programa.
+ *
+ * Esta função limpa a tela e imprime um menu de ajuda detalhado, que inclui:
+ * - Uma visão geral do programa e suas funcionalidades.
+ * - Dicas de utilização para evitar erros comuns.
+ * - Instruções para execução via linha de comandos.
+ * - Descrição das funções básicas e adicionais disponíveis no programa.
+ *
+ * Funções Básicas:
+ * - [01] Construção de uma matriz 4x18.
+ * - [02] Cálculo do logaritmo natural.
+ * - [03] Cálculo da mediana.
+ * - [04] Ordenação de valores simétricos.
+ * - [05] Filtros específicos.
+ * - [06] Soma das metades do vetor.
+ *
+ * Funções Adicionais:
+ * - [07] Página de ajuda.
+ * - [08] Mistura de vetores.
+ * - [09] Decomposição em números primos.
+ * - [10] Produto de matrizes.
+ * - [11] Cálculo da matriz transposta.
+ * - [12] Sair do Programa.
+ *
+ * O menu de ajuda é exibido em um formato visualmente agradável, utilizando
+ * caracteres especiais para criar bordas e seções.
+ */
 void ft_ajuda(void)
 {
 	ft_clear_screen();
@@ -701,11 +734,17 @@ void ft_ajuda(void)
 	printf("║  [12] Sair do Programa                                            ║\n");
     printf("║   - Encerra o programa. Use esta opção quando finalizar todas     ║\n");
 	printf("║     as operações desejadas.                                       ║\n");
-	printf("╚═══════════════════════════════════════════════════════════════════╝\n");
-
-    
+	printf("╚═══════════════════════════════════════════════════════════════════╝\n");  
 }
 
+/**
+ * @brief Exibe a ajuda básica do programa.
+ *
+ * Esta função imprime instruções detalhadas sobre como executar o programa,
+ * navegar pelo menu, fornecer entrada de dados, dicas úteis e como encerrar
+ * o programa. As instruções são exibidas em um formato de caixa ASCII para
+ * facilitar a leitura e a compreensão.
+ */
 void ft_ajuda_cmd()
 {
     printf("╔═══════════════════════════════════════════════════════════════════╗\n");
@@ -878,7 +917,7 @@ void ft_exec_menu(int opcao, int vetor[N])
  * Se a tecla `ENTER` for pressionada, ela limpa a tela e permite que o programa prossiga. 
  * Se qualquer outra tecla for pressionada, ela continua solicitando ao usuário até que a tecla `ENTER` seja pressionada.
  */
-void ft_wait_enter() 
+void ft_wait_enter(void) 
 {
     char av[5] = {};
     int enter = 0;
@@ -928,15 +967,15 @@ void ft_clear_screen(void)
  */
 int ft_check_digits(int vetor[N], int size)
 {
-	int c = 0;
+	int chars = 0;
 	for(int i = 0; i < size; i++)
 	{	
 		if(vetor[i] >= 10 && vetor[i] < 100)
-			c++;
+			chars++;
 		else if(vetor[i] >= 100)
-			c += 2;
+			chars += 2;
 	}
-	return c;
+	return (chars);
 }
 
 /**
@@ -945,20 +984,20 @@ int ft_check_digits(int vetor[N], int size)
  * Esta função recebe um parâmetro inteiro e imprime essa quantidade de espaços
  * na saída padrão.
  *
- * @param td O número de espaços a imprimir.
+ * @param spaces O número de espaços a imprimir.
  */
-void ft_spaces(int td)
+void ft_spaces(int spaces)
 {
-	while (td)
+	while (spaces)
 	{
 		printf(" ");
-		td--;
+		spaces--;
 	}
 }
 
 void ft_option_one(int vetor[N])
 {
-	int td = 55 - (37 + ft_check_digits(vetor, N));
+	int spaces = 55 - (37 + ft_check_digits(vetor, N));
 	int **matriz = ft_matriz_vetor(vetor);
 
 	if(!matriz)
@@ -971,7 +1010,7 @@ void ft_option_one(int vetor[N])
 	printf("║  ↓ VETOR INCIAL ↓                                      ║\n");
 	printf("║ ");
 	ft_printf_vetor(vetor, N, 0);
-	ft_spaces(td);
+	ft_spaces(spaces);
 	printf(" ║\n");
 	printf("║                                                        ║\n");
 	printf("║                                                        ║\n");
@@ -982,7 +1021,7 @@ void ft_option_one(int vetor[N])
 		printf("║ ");
 		for(int j = 0; j < N; j++)
 			printf("%d ", matriz[i][j]);
-		ft_spaces(td);
+		ft_spaces(spaces);
 		printf(" ║\n");
 	}
 	printf("╚════════════════════════════════════════════════════════╝\n");
@@ -993,7 +1032,7 @@ void ft_option_one(int vetor[N])
 void ft_option_two(int vetor[N])
 {
 
-	int td = 55 - (37 + ft_check_digits(vetor, N));
+	int spaces = 55 - (37 + ft_check_digits(vetor, N));
 
 	ft_clear_screen();
 	printf("╔════════════════════════════════════════════════════════╗\n");
@@ -1003,7 +1042,7 @@ void ft_option_two(int vetor[N])
 	printf("║  ↓ VETOR INCIAL ↓                                      ║\n");
 	printf("║ ");
 	ft_printf_vetor(vetor, N, 0);
-	ft_spaces(td);
+	ft_spaces(spaces);
 	printf(" ║\n");
 	printf("╠════════════════════════════════════════════════════════╣\n");
 	printf("║                                                        ║\n");
@@ -1023,7 +1062,7 @@ void ft_option_two(int vetor[N])
 
 void ft_option_three(int vetor[N])
 {
-	int td = 55 - (37 + ft_check_digits(vetor, N));
+	int spaces = 55 - (37 + ft_check_digits(vetor, N));
 	int *vetor_ordenado = ft_vetor_ordenado_crescente(vetor,0);
 
 	if(!vetor_ordenado)
@@ -1036,13 +1075,13 @@ void ft_option_three(int vetor[N])
 	printf("║  ↓ VETOR INCIAL ↓                                      ║\n");
 	printf("║ ");
 	ft_printf_vetor(vetor, N, 0);
-	ft_spaces(td);
+	ft_spaces(spaces);
 	printf(" ║\n");
 	printf("║                                                        ║\n");
 	printf("║  ↓ VETOR ORDENADO ↓                                    ║\n");
 	printf("║ ");
 	ft_printf_vetor(vetor_ordenado, N, 0);
-	ft_spaces(td);
+	ft_spaces(spaces);
 	printf(" ║\n");
 	printf("║                                                        ║\n");
 	if(vetor_ordenado[N/2] < 10 && vetor_ordenado[(N/2)-1] < 10)
@@ -1065,7 +1104,7 @@ void ft_option_three(int vetor[N])
 
 void ft_option_four(int vetor[N])
 {
-	int td;
+	int spaces;
 	int *vetor_simetrico = ft_vetor_ordenado_crescente(vetor,1);
 
 	if(!vetor_simetrico)
@@ -1078,16 +1117,16 @@ void ft_option_four(int vetor[N])
 	printf("║  ↓ VETOR INCIAL ↓                                                        ║\n");
 	printf("║ ");
 	ft_printf_vetor(vetor, N, 0);
-	td = 73 - (37 + ft_check_digits(vetor, N));
-	ft_spaces(td);
+	spaces = 73 - (37 + ft_check_digits(vetor, N));
+	ft_spaces(spaces);
 	printf(" ║\n");
 	printf("╠══════════════════════════════════════════════════════════════════════════╣\n");
 	printf("║                                                                          ║\n");
 	printf("║  ↓ VETOR SIMÉTRICO ORDENADO ↓                                            ║\n");
 	printf("║ ");
 	ft_printf_vetor(vetor_simetrico, N, 0);
-	td = 73 - (55 + ft_check_digits(vetor, N));
-	ft_spaces(td);
+	spaces = 73 - (55 + ft_check_digits(vetor, N));
+	ft_spaces(spaces);
 	printf(" ║\n");
 	printf("╚══════════════════════════════════════════════════════════════════════════╝\n");
 	free(vetor_simetrico);
@@ -1096,7 +1135,7 @@ void ft_option_four(int vetor[N])
 
 void ft_option_five(int vetor[N])
 {
-	int td = 55 - (37 + ft_check_digits(vetor, N));
+	int spaces = 55 - (37 + ft_check_digits(vetor, N));
 
 	ft_clear_screen();
 	printf("╔════════════════════════════════════════════════════════╗\n");
@@ -1106,13 +1145,13 @@ void ft_option_five(int vetor[N])
 	printf("║  ↓ VETOR INCIAL ↓                                      ║\n");
 	printf("║ ");
 	ft_printf_vetor(vetor, N, 0);
-	ft_spaces(td);
+	ft_spaces(spaces);
 	printf(" ║\n");
 	printf("║                                                        ║\n");
 	printf("║ ↓ VALORES MAIORES QUE 2 E DIVISIVEIS POR 5 ↓           ║\n");
 	printf("║ ");
-	td = 54 - (ft_maior_divisivel(vetor)); 
-	ft_spaces(td);
+	spaces = 54 - (ft_maior_divisivel(vetor)); 
+	ft_spaces(spaces);
 	printf(" ║\n");
 	printf("╚════════════════════════════════════════════════════════╝\n");
 
@@ -1120,7 +1159,7 @@ void ft_option_five(int vetor[N])
 
 void ft_option_six(int vetor[N])
 {
-	int td = 55 - (37 + ft_check_digits(vetor, N));
+	int spaces = 55 - (37 + ft_check_digits(vetor, N));
 
 	ft_clear_screen();
 	printf("╔════════════════════════════════════════════════════════╗\n");
@@ -1130,20 +1169,20 @@ void ft_option_six(int vetor[N])
 	printf("║  ↓ VETOR INCIAL ↓                                      ║\n");
 	printf("║ ");
 	ft_printf_vetor(vetor, N, 0);
-	ft_spaces(td);
+	ft_spaces(spaces);
 	printf(" ║\n");
 	printf("║                                                        ║\n");
 	printf("║ ↓ VETOR ORIGINADO↓                                     ║\n");
 	printf("║ ");
-	td = 55 - (19 + ft_vetor_soma_metades(vetor));
-	ft_spaces(td);
+	spaces = 55 - (19 + ft_vetor_soma_metades(vetor));
+	ft_spaces(spaces);
 	printf(" ║\n");
 	printf("╚════════════════════════════════════════════════════════╝\n");
 }
 
 void ft_option_eight(int vetor[N])
 {
-	int td = 55 - (37 + ft_check_digits(vetor, N));
+	int spaces = 55 - (37 + ft_check_digits(vetor, N));
 	int **vetores = ft_vetor_baralhado(vetor);
 
 	if(!vetores)
@@ -1156,32 +1195,45 @@ void ft_option_eight(int vetor[N])
 	printf("║  ↓ VETOR INCIAL ↓                                      ║\n");
 	printf("║ ");
 	ft_printf_vetor(vetores[0], N, 0);
-	ft_spaces(td);
+	ft_spaces(spaces);
 	printf(" ║\n");
+
+	printf("║                                                        ║\n");
+	printf("║  ↓ NOVO VETOR LIDO ↓                                   ║\n");
+	printf("║ ");
+	ft_printf_vetor(vetores[2], N, 0);
+	spaces = 55 - (37 + ft_check_digits(vetores[2], N));
+	ft_spaces(spaces);
+	printf(" ║\n");
+
+	printf("╠════════════════════════════════════════════════════════╣\n");
 	printf("║                                                        ║\n");
 	printf("║  ↓ METADE USADA DO VETOR INICIAL ↓                     ║\n");
 	printf("║ ");
-	ft_printf_vetor(vetores[3], 9, 0);
-	td = 55 - (19 + ft_check_digits(vetores[3], N / 2));
-	ft_spaces(td);
+	ft_printf_vetor(vetores[4], 9, 0);
+	spaces = 55 - (19 + ft_check_digits(vetores[4], N / 2));
+	ft_spaces(spaces);
 	printf(" ║\n");
+
 	printf("║                                                        ║\n");
 	printf("║  ↓ METADE USADA DO VETOR INSERIDO ↓                    ║\n");
 	printf("║ ");
-	ft_printf_vetor(vetores[4], 9, 0);
-	td = 55 - (19 + ft_check_digits(vetores[4], N / 2));
-	ft_spaces(td);
+	ft_printf_vetor(vetores[5], 9, 0);
+	spaces = 55 - (19 + ft_check_digits(vetores[5], N / 2));
+	ft_spaces(spaces);
 	printf(" ║\n");
+
+	printf("╠════════════════════════════════════════════════════════╣\n");
 	printf("║                                                        ║\n");
 	printf("║  ↓ VETOR BARALHADO ↓                                   ║\n");
 	printf("║ ");
 	ft_printf_vetor(vetores[1], N, 0);
-	td = 55 - (37 + ft_check_digits(vetores[1], N));
-	ft_spaces(td);
+	spaces = 55 - (37 + ft_check_digits(vetores[1], N));
+	ft_spaces(spaces);
 	printf(" ║\n");
 	printf("╚════════════════════════════════════════════════════════╝\n");
 
-	ft_free_matriz(vetores, 5);
+	ft_free_matriz(vetores, 6);
 
 }
 
@@ -1190,7 +1242,7 @@ void ft_option_nine(int vetor[N])
 	int **valores = ft_decompor(vetor);
 	int impares = ft_check_impar(vetor);
 
-	int td = 55 - (37 + ft_check_digits(vetor, N));
+	int spaces = 55 - (37 + ft_check_digits(vetor, N));
 
 	if(!valores)
 		return;
@@ -1202,14 +1254,14 @@ void ft_option_nine(int vetor[N])
 	printf("║  ↓ VETOR INCIAL ↓                                      ║\n");
 	printf("║ ");
 	ft_printf_vetor(vetor, N, 0);
-	ft_spaces(td);
+	ft_spaces(spaces);
 	printf(" ║\n");
 	printf("║                                                        ║\n");
 	printf("║  ↓ VALORES IMPARES DO VETOR ↓                          ║\n");
 	printf("║ "); 
 	ft_printf_vetor(valores[impares], impares, 0);
-	td = 53 - (((impares * 2) - 1) + ft_check_digits(valores[impares], impares));
-	ft_spaces(td);
+	spaces = 53 - (((impares * 2) - 1) + ft_check_digits(valores[impares], impares));
+	ft_spaces(spaces);
 	printf(" ║\n");
 	printf("║                                                        ║\n");
 	printf("║  ↓ VALORES DECOMPOSTOS ↓                               ║\n");
@@ -1226,16 +1278,16 @@ void ft_option_nine(int vetor[N])
 		if(j == 3)
 		{	
 			if(!ft_check_digits(valores[i], N))
-				td = 55 - (10 + (ft_check_digits(valores[i], N)) + 1);
+				spaces = 55 - (10 + (ft_check_digits(valores[i], N)) + 1);
 			else
-				td = 55 - (10 + (ft_check_digits(valores[i], N)));
+				spaces = 55 - (10 + (ft_check_digits(valores[i], N)));
 		}
 		else if (j == 2)
-			td = 55 - 7;
+			spaces = 55 - 7;
 		else
-			td = 55 - (15 + (ft_check_digits(valores[i], N)));
+			spaces = 55 - (15 + (ft_check_digits(valores[i], N)));
 		
-		ft_spaces(td);
+		ft_spaces(spaces);
 		printf(" ║\n");
 		printf("║                                                        ║\n");
 	}
@@ -1253,7 +1305,7 @@ void ft_option_ten(int vetor[N])
 	if (!matriz)
 		return;
 
-	int td = 108 - (37 + ft_check_digits(vetor, N));
+	int spaces = 108 - (37 + ft_check_digits(vetor, N));
 
 	ft_clear_screen();
 	printf("╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════╗\n");
@@ -1263,13 +1315,13 @@ void ft_option_ten(int vetor[N])
 	printf("║  ↓ VETOR INCIAL ↓                                                                                           ║\n");
 	printf("║ ");
 	ft_printf_vetor(vetor, N, 0);
-	ft_spaces(td);
+	ft_spaces(spaces);
 	printf(" ║\n");
 	printf("║                                                                                                             ║\n");
 	printf("║  ↓ VETOR ORDENADO ↓                                                                                         ║\n");
 	printf("║ ");
 	ft_printf_vetor(vetor_ordenado, N, 0);
-	ft_spaces(td);
+	ft_spaces(spaces);
 	printf(" ║\n");
 	printf("║                                                                                                             ║\n");
 	printf("║  ↓ MATRIZ ORIGINARIA DOS VETORES ↓                                                                          ║\n");
@@ -1301,7 +1353,7 @@ void ft_option_eleven(int vetor[N])
 		return;
 	int **transposta = ft_transposta(matriz);
 
-	int td = 108 - (37 + ft_check_digits(vetor, N));
+	int spaces = 108 - (37 + ft_check_digits(vetor, N));
 
 	ft_clear_screen();
 	printf("╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════╗\n");

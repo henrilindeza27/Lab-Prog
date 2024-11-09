@@ -9,7 +9,7 @@ FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME_PROJECT)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re ex rv v
 
 $(NAME_PROJECT): $(OBJS)
 
@@ -28,10 +28,15 @@ fclean: clean
 
 re: fclean all
 
+#Compila e executa o programa
 ex:
 	@make && clear && ./$(NAME_PROJECT)
+
+#Recompila e executa o programa com o valgrind
 rv:
 	@make re && valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME_PROJECT)
+
+#Compila e executa o programa com o valgrind
 v:
 	@make && clear && valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME_PROJECT)
 	
