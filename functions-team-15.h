@@ -34,7 +34,7 @@ int ft_menu();
 void ft_exec_menu(int opcao, int vetor[N]);
 void ft_wait_enter();
 void ft_clear_screen(void);
-int ft_check_2digits(int vetor[N], int size);
+int ft_check_digits(int vetor[N], int size);
 
 
 void ft_option_one(int vetor[N]);
