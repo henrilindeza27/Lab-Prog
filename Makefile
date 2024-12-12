@@ -1,15 +1,16 @@
 NAME_PROJECT = lp-team-15
 
-SRCS = main-team-15.c functions-team-15.c
+SRCS = $(wildcard *.c)
 
 OBJS = $(SRCS:.c=.o)
 
-#valgrind  --leak-check=full --show-leak-kinds=all 
 FLAGS = -Wall -Wextra -Werror
+FLAGS_VALGRIND = --leak-check=full --show-leak-kinds=all --track-origins=yes
 
 all: $(NAME_PROJECT)
 
-.PHONY: all clean fclean re ex rv v
+.PHONY: all clean fclean re exec rv v
+
 
 $(NAME_PROJECT): $(OBJS)
 
@@ -29,16 +30,16 @@ fclean: clean
 re: fclean all
 
 #Compila e executa o programa
-ex:
+exec:
 	@make && clear && ./$(NAME_PROJECT)
 
 #Recompila e executa o programa com o valgrind
 rv:
-	@make re && valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME_PROJECT)
+	@make re && valgrind $(FLAGS_VALGRIND) ./$(NAME_PROJECT)
 
 #Compila e executa o programa com o valgrind
 v:
-	@make && clear && valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME_PROJECT)
+	@make && clear && valgrind $(FLAGS_VALGRIND) ./$(NAME_PROJECT)
 	
 GREEN = \033[1;32m
 YELLOW = \033[1;33m

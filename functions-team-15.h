@@ -8,8 +8,10 @@
 #include <math.h>
 #include <ctype.h>
 #include <time.h>
+#include <signal.h>
 
 #define N 18
+
 
 int ft_menu(void);
 void ft_ajuda_cmd(void);

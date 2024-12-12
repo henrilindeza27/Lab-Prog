@@ -4,7 +4,7 @@ int	main(int argc, char **argv)
 {
 	int *vetor;
     int option;
-
+		
 	if (argc == 2)
 	{
 		if (!strcmp("--help", argv[1]))
@@ -18,9 +18,10 @@ int	main(int argc, char **argv)
 	}
 
 	vetor = ft_ler_vetor(0);
+	
 	if (!vetor)
 	{
-		printf("ERRO\n");
+		printf("ERROR\n");
 		return (0);
 	}
     
