@@ -11,6 +11,14 @@ Include dependency graph for functions-\/team-\/15.c\+:\nopagebreak
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{functions-team-15_8c_a84092888c6c67c9908883673a2dc2f5f}{ft\+\_\+banner\+\_\+vetor}} ()
+\item 
+void \mbox{\hyperlink{functions-team-15_8c_a61f5c9622fea29e687a3c422beaa4d4b}{ft\+\_\+carregamento}} (char $\ast$texto, size\+\_\+t tamanho, int flag\+\_\+carregamento)
+\item 
+void \mbox{\hyperlink{functions-team-15_8c_aa63ff57d5ca7e5b7c84dd8f87df89138}{ft\+\_\+banner\+\_\+team}} ()
+\item 
+void \mbox{\hyperlink{functions-team-15_8c_a452cebaa4fce9e32f11dc3cf499ce86c}{ft\+\_\+mostrar\+\_\+apresentação}} ()
+\item 
 int \mbox{\hyperlink{functions-team-15_8c_a837d466412a485e01631738b0382c72d}{ft\+\_\+menu}} (void)
 \item 
 int $\ast$$\ast$ \mbox{\hyperlink{functions-team-15_8c_a1bf7c7258379276848ce9a2b45ce07b8}{ft\+\_\+matriz\+\_\+vetor}} (int vetor\mbox{[}\mbox{\hyperlink{functions-team-15_8h_a0240ac851181b84ac374872dc5434ee4}{N}}\mbox{]})
@@ -59,7 +67,7 @@ void \mbox{\hyperlink{functions-team-15_8c_a009c8d746a1f7fb132eedf6ea313ebbd}{ft
 \item 
 void \mbox{\hyperlink{functions-team-15_8c_a20800d7981fa67da03c4b01a2f8c895d}{ft\+\_\+clean\+\_\+input}} (void)
 \item 
-void \mbox{\hyperlink{functions-team-15_8c_a785cd786bc11c3b36a6549bd5b2f8d40}{ft\+\_\+exec\+\_\+menu}} (int opcao, int vetor\mbox{[}\mbox{\hyperlink{functions-team-15_8h_a0240ac851181b84ac374872dc5434ee4}{N}}\mbox{]})
+void \mbox{\hyperlink{functions-team-15_8c_a56eeaa46c2fbdfc228695d7fe1659f93}{ft\+\_\+exec\+\_\+menu}} (int opcao, int vetor\mbox{[}\mbox{\hyperlink{functions-team-15_8h_a0240ac851181b84ac374872dc5434ee4}{N}}\mbox{]}, int $\ast$flag)
 \item 
 void \mbox{\hyperlink{functions-team-15_8c_aa79c1d0ef22f3ae5ebfe3953e111fea8}{ft\+\_\+wait\+\_\+enter}} (void)
 \item 
@@ -85,15 +93,15 @@ void \mbox{\hyperlink{functions-team-15_8c_ad3e3bbc5fad2e175c5e3327e4178fa7d}{ft
 \item 
 void \mbox{\hyperlink{functions-team-15_8c_a3cb9cc90e75066c1f74cb7e8ab7c6260}{ft\+\_\+option\+\_\+nine}} (int vetor\mbox{[}\mbox{\hyperlink{functions-team-15_8h_a0240ac851181b84ac374872dc5434ee4}{N}}\mbox{]})
 \item 
-void \mbox{\hyperlink{functions-team-15_8c_a365c26b1f89151222816d4f34f43a3e0}{ft\+\_\+option\+\_\+ten}} (int vetor\mbox{[}\mbox{\hyperlink{functions-team-15_8h_a0240ac851181b84ac374872dc5434ee4}{N}}\mbox{]})
+void \mbox{\hyperlink{functions-team-15_8c_aab530ab1bd45f37e4d6149d62bc9f079}{ft\+\_\+option\+\_\+ten}} (int vetor\mbox{[}\mbox{\hyperlink{functions-team-15_8h_a0240ac851181b84ac374872dc5434ee4}{N}}\mbox{]}, int $\ast$flag)
 \begin{DoxyCompactList}\small\item\em Exibe o vetor inicial, o vetor ordenado e a matriz resultante da multiplicação desses vetores. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{functions-team-15_8c_a24b40166c629f7e7ed8f3b25657e405f}{ft\+\_\+option\+\_\+eleven}} (int vetor\mbox{[}\mbox{\hyperlink{functions-team-15_8h_a0240ac851181b84ac374872dc5434ee4}{N}}\mbox{]})
+void \mbox{\hyperlink{functions-team-15_8c_aa3aeaa29aab07eb736e7d5a02803f1df}{ft\+\_\+option\+\_\+eleven}} (int vetor\mbox{[}\mbox{\hyperlink{functions-team-15_8h_a0240ac851181b84ac374872dc5434ee4}{N}}\mbox{]}, int $\ast$flag)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 \begin{DoxyAuthor}{Author}
-Henrique Verissiomo / Martim Afonso / Afonso Paraíba / Maria Terrinha / Tomé / Kika 
+Henrique Verissiomo / Martim Afonso / Afonso Paraíba / Maria Terrinha / Tomé Pedro / Ana Amoreira 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
 1.\+0 
@@ -145,7 +153,36 @@ O menu de ajuda é exibido em um formato visualmente agradável, utilizando cara
 
 Exibe a ajuda básica do programa.
 
-Esta função imprime instruções detalhadas sobre como executar o programa, navegar pelo menu, fornecer entrada de dados, dicas úteis e como encerrar o programa. As instruções são exibidas em um formato de caixa ASCII para facilitar a leitura e a compreensão. \mbox{\Hypertarget{functions-team-15_8c_aac816163081f80e503cd1b3c63f836ef}\label{functions-team-15_8c_aac816163081f80e503cd1b3c63f836ef}} 
+Esta função imprime instruções detalhadas sobre como executar o programa, navegar pelo menu, fornecer entrada de dados, dicas úteis e como encerrar o programa. As instruções são exibidas em um formato de caixa ASCII para facilitar a leitura e a compreensão. \mbox{\Hypertarget{functions-team-15_8c_aa63ff57d5ca7e5b7c84dd8f87df89138}\label{functions-team-15_8c_aa63ff57d5ca7e5b7c84dd8f87df89138}} 
+\index{functions-\/team-\/15.c@{functions-\/team-\/15.c}!ft\_banner\_team@{ft\_banner\_team}}
+\index{ft\_banner\_team@{ft\_banner\_team}!functions-\/team-\/15.c@{functions-\/team-\/15.c}}
+\doxysubsubsection{\texorpdfstring{ft\_banner\_team()}{ft\_banner\_team()}}
+{\footnotesize\ttfamily void ft\+\_\+banner\+\_\+team (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Esta função imprime um banner decorativo no console, que inclui o nome da equipa e alguns elementos gráficos. \mbox{\Hypertarget{functions-team-15_8c_a84092888c6c67c9908883673a2dc2f5f}\label{functions-team-15_8c_a84092888c6c67c9908883673a2dc2f5f}} 
+\index{functions-\/team-\/15.c@{functions-\/team-\/15.c}!ft\_banner\_vetor@{ft\_banner\_vetor}}
+\index{ft\_banner\_vetor@{ft\_banner\_vetor}!functions-\/team-\/15.c@{functions-\/team-\/15.c}}
+\doxysubsubsection{\texorpdfstring{ft\_banner\_vetor()}{ft\_banner\_vetor()}}
+{\footnotesize\ttfamily void ft\+\_\+banner\+\_\+vetor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Esta função imprime um banner com um design decorativo de vetor no console. \mbox{\Hypertarget{functions-team-15_8c_a61f5c9622fea29e687a3c422beaa4d4b}\label{functions-team-15_8c_a61f5c9622fea29e687a3c422beaa4d4b}} 
+\index{functions-\/team-\/15.c@{functions-\/team-\/15.c}!ft\_carregamento@{ft\_carregamento}}
+\index{ft\_carregamento@{ft\_carregamento}!functions-\/team-\/15.c@{functions-\/team-\/15.c}}
+\doxysubsubsection{\texorpdfstring{ft\_carregamento()}{ft\_carregamento()}}
+{\footnotesize\ttfamily void ft\+\_\+carregamento (\begin{DoxyParamCaption}\item[{char $\ast$}]{texto,  }\item[{size\+\_\+t}]{tamanho,  }\item[{int}]{flag\+\_\+carregamento }\end{DoxyParamCaption})}
+
+Esta função exibe uma barra de carregamento ou imprime o texto fornecido caractere por caractere com base no parâmetro flag\+\_\+carregamento. Se flag\+\_\+carregamento estiver definido, exibe uma barra de carregamento. Caso contrário, imprime o texto.
+
+
+\begin{DoxyParams}{Parameters}
+{\em texto} & Ponteiro para o texto a ser impresso. Se flag\+\_\+carregamento estiver definido, este parâmetro pode ser NULL. \\
+\hline
+{\em tamanho} & O comprimento do texto a ser impresso ou o número de iterações para a barra de carregamento. \\
+\hline
+{\em flag\+\_\+carregamento} & Flag para determinar o modo de operação. Se definido como 1, uma barra de carregamento é exibida. Se definido como 0, o texto é impresso caractere por caractere. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{functions-team-15_8c_aac816163081f80e503cd1b3c63f836ef}\label{functions-team-15_8c_aac816163081f80e503cd1b3c63f836ef}} 
 \index{functions-\/team-\/15.c@{functions-\/team-\/15.c}!ft\_check\_digits@{ft\_check\_digits}}
 \index{ft\_check\_digits@{ft\_check\_digits}!functions-\/team-\/15.c@{functions-\/team-\/15.c}}
 \doxysubsubsection{\texorpdfstring{ft\_check\_digits()}{ft\_check\_digits()}}
@@ -220,11 +257,11 @@ Esta função recebe um vetor de inteiros e decompõe cada número ímpar em seu
 \begin{DoxyReturn}{Returns}
 Um ponteiro para uma matriz alocada dinamicamente contendo as fatorações primas dos números ímpares do vetor de entrada. A última linha contém todos os números ímpares do vetor de entrada. Retorna {\ttfamily NULL} se a alocação de memória falhar. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{functions-team-15_8c_a785cd786bc11c3b36a6549bd5b2f8d40}\label{functions-team-15_8c_a785cd786bc11c3b36a6549bd5b2f8d40}} 
+\mbox{\Hypertarget{functions-team-15_8c_a56eeaa46c2fbdfc228695d7fe1659f93}\label{functions-team-15_8c_a56eeaa46c2fbdfc228695d7fe1659f93}} 
 \index{functions-\/team-\/15.c@{functions-\/team-\/15.c}!ft\_exec\_menu@{ft\_exec\_menu}}
 \index{ft\_exec\_menu@{ft\_exec\_menu}!functions-\/team-\/15.c@{functions-\/team-\/15.c}}
 \doxysubsubsection{\texorpdfstring{ft\_exec\_menu()}{ft\_exec\_menu()}}
-{\footnotesize\ttfamily void ft\+\_\+exec\+\_\+menu (\begin{DoxyParamCaption}\item[{int}]{opcao,  }\item[{int}]{vetor\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void ft\+\_\+exec\+\_\+menu (\begin{DoxyParamCaption}\item[{int}]{opcao,  }\item[{int}]{vetor\mbox{[}\+N\mbox{]},  }\item[{int $\ast$}]{flag }\end{DoxyParamCaption})}
 
 Executa uma opção do menu com base na escolha do usuário.
 
@@ -235,6 +272,8 @@ Esta função limpa a tela, executa a função correspondente com base na escolh
 {\em opcao} & A opção do menu escolhida pelo usuário. \\
 \hline
 {\em vetor} & Um vetor de inteiros a ser passado para as funções de opção. \\
+\hline
+{\em flag} & Um inteiro para verificar se a opção 10 foi usada ou não (1 se foi, 0 se não foi) \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{functions-team-15_8c_a5e948defd8f97587ed7df2ebc9f752b3}\label{functions-team-15_8c_a5e948defd8f97587ed7df2ebc9f752b3}} 
@@ -366,7 +405,26 @@ Esta função imprime o menu principal com várias opções para o usuário esco
 \begin{DoxyReturn}{Returns}
 A opção de menu selecionada (um inteiro entre 1 e 12). 
 \end{DoxyReturn}
-\mbox{\Hypertarget{functions-team-15_8c_a0d3c1233eabfabcf03b9d1ee106e66bb}\label{functions-team-15_8c_a0d3c1233eabfabcf03b9d1ee106e66bb}} 
+\mbox{\Hypertarget{functions-team-15_8c_a452cebaa4fce9e32f11dc3cf499ce86c}\label{functions-team-15_8c_a452cebaa4fce9e32f11dc3cf499ce86c}} 
+\index{functions-\/team-\/15.c@{functions-\/team-\/15.c}!ft\_mostrar\_apresentação@{ft\_mostrar\_apresentação}}
+\index{ft\_mostrar\_apresentação@{ft\_mostrar\_apresentação}!functions-\/team-\/15.c@{functions-\/team-\/15.c}}
+\doxysubsubsection{\texorpdfstring{ft\_mostrar\_apresentação()}{ft\_mostrar\_apresentação()}}
+{\footnotesize\ttfamily void ft\+\_\+mostrar\+\_\+apresentação (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Esta função limpa a tela, imprime uma moldura decorativa com texto dentro, mostra uma barra de carregamento e espera que o usuário pressione Enter.
+
+O texto exibido inclui\+:
+\begin{DoxyItemize}
+\item Uma borda superior e inferior feita de caracteres especiais.
+\item Um texto decorativo no meio.
+\end{DoxyItemize}
+
+A função chama as seguintes funções auxiliares\+:
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{functions-team-15_8c_adc1a96b70105600c27747608a34bc6cb}{ft\+\_\+clear\+\_\+screen()}}\+: Limpa a tela do terminal.
+\item ft\+\_\+barra\+\_\+carregamento()\+: Exibe uma barra de carregamento.
+\item \mbox{\hyperlink{functions-team-15_8c_aa79c1d0ef22f3ae5ebfe3953e111fea8}{ft\+\_\+wait\+\_\+enter()}}\+: Espera que o usuário pressione a tecla Enter. 
+\end{DoxyItemize}\mbox{\Hypertarget{functions-team-15_8c_a0d3c1233eabfabcf03b9d1ee106e66bb}\label{functions-team-15_8c_a0d3c1233eabfabcf03b9d1ee106e66bb}} 
 \index{functions-\/team-\/15.c@{functions-\/team-\/15.c}!ft\_multiplicar\_matriz@{ft\_multiplicar\_matriz}}
 \index{ft\_multiplicar\_matriz@{ft\_multiplicar\_matriz}!functions-\/team-\/15.c@{functions-\/team-\/15.c}}
 \doxysubsubsection{\texorpdfstring{ft\_multiplicar\_matriz()}{ft\_multiplicar\_matriz()}}
@@ -399,11 +457,11 @@ Esta função recebe um vetor de inteiros como entrada e pega numa das metades d
 {\em vetor} & O vetor de inteiros de tamanho N. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{functions-team-15_8c_a24b40166c629f7e7ed8f3b25657e405f}\label{functions-team-15_8c_a24b40166c629f7e7ed8f3b25657e405f}} 
+\mbox{\Hypertarget{functions-team-15_8c_aa3aeaa29aab07eb736e7d5a02803f1df}\label{functions-team-15_8c_aa3aeaa29aab07eb736e7d5a02803f1df}} 
 \index{functions-\/team-\/15.c@{functions-\/team-\/15.c}!ft\_option\_eleven@{ft\_option\_eleven}}
 \index{ft\_option\_eleven@{ft\_option\_eleven}!functions-\/team-\/15.c@{functions-\/team-\/15.c}}
 \doxysubsubsection{\texorpdfstring{ft\_option\_eleven()}{ft\_option\_eleven()}}
-{\footnotesize\ttfamily void ft\+\_\+option\+\_\+eleven (\begin{DoxyParamCaption}\item[{int}]{vetor\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void ft\+\_\+option\+\_\+eleven (\begin{DoxyParamCaption}\item[{int}]{vetor\mbox{[}\+N\mbox{]},  }\item[{int $\ast$}]{flag }\end{DoxyParamCaption})}
 
 Esta função recebe um vetor de inteiros, recria a matriz NxN, calcula a transposta da matriz e, em seguida, exibe tanto a matriz original quanto sua transposta.
 
@@ -486,11 +544,11 @@ Esta função imprime uma exibição formatada do vetor inicial e do vetor obtid
 {\em vetor} & O vetor de entrada de inteiros. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{functions-team-15_8c_a365c26b1f89151222816d4f34f43a3e0}\label{functions-team-15_8c_a365c26b1f89151222816d4f34f43a3e0}} 
+\mbox{\Hypertarget{functions-team-15_8c_aab530ab1bd45f37e4d6149d62bc9f079}\label{functions-team-15_8c_aab530ab1bd45f37e4d6149d62bc9f079}} 
 \index{functions-\/team-\/15.c@{functions-\/team-\/15.c}!ft\_option\_ten@{ft\_option\_ten}}
 \index{ft\_option\_ten@{ft\_option\_ten}!functions-\/team-\/15.c@{functions-\/team-\/15.c}}
 \doxysubsubsection{\texorpdfstring{ft\_option\_ten()}{ft\_option\_ten()}}
-{\footnotesize\ttfamily void ft\+\_\+option\+\_\+ten (\begin{DoxyParamCaption}\item[{int}]{vetor\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void ft\+\_\+option\+\_\+ten (\begin{DoxyParamCaption}\item[{int}]{vetor\mbox{[}\+N\mbox{]},  }\item[{int $\ast$}]{flag }\end{DoxyParamCaption})}
 
 
 
@@ -506,6 +564,8 @@ Esta função realiza os seguintes passos\+:
 
 \begin{DoxyParams}{Parameters}
 {\em vetor} & O vetor de entrada de inteiros com tamanho N. \\
+\hline
+{\em flag} & Um inteiro para mudar o valor quando esta função é usada \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{functions-team-15_8c_abe4289b9444e751ca4bb03836b50e88a}\label{functions-team-15_8c_abe4289b9444e751ca4bb03836b50e88a}} 

@@ -1,11 +1,132 @@
 /**
  * @file    functions-team-15.c
- * @author  Henrique Verissiomo / Martim Afonso / Afonso Paraíba / Maria Terrinha / Tomé / Kika
+ * @author  Henrique Verissiomo / Martim Afonso / Afonso Paraíba / Maria Terrinha / Tomé Pedro / Ana Amoreira
  * @version 1.0
  */
 
 #include "functions-team-15.h"
 
+
+/**
+ *
+ * Esta função imprime um banner com um design decorativo de vetor no console.
+ */
+void ft_banner_vetor()
+{
+	printf("╔═════════════════════════════════════════════════════════════════╗\n");
+	printf(" ▗▄▄▄▖▗▖  ▗▖ ▗▄▄▖▗▄▄▄▖▗▄▄▖ ▗▄▄▄▖▗▄▄▖     ▗▖  ▗▖▗▄▄▄▖▗▄▄▄▖▗▄▖ ▗▄▄▖  \n");
+	printf("   █  ▐▛▚▖▐▌▐▌   ▐▌   ▐▌ ▐▌  █  ▐▌ ▐▌    ▐▌  ▐▌▐▌     █ ▐▌ ▐▌▐▌ ▐▌ \n");
+	printf("   █  ▐▌ ▝▜▌ ▝▀▚▖▐▛▀▀▘▐▛▀▚▖  █  ▐▛▀▚▖    ▐▌  ▐▌▐▛▀▀▘  █ ▐▌ ▐▌▐▛▀▚▖ \n");
+	printf(" ▗▄█▄▖▐▌  ▐▌▗▄▄▞▘▐▙▄▄▖▐▌ ▐▌▗▄█▄▖▐▌ ▐▌     ▝▚▞▘ ▐▙▄▄▖  █ ▝▚▄▞▘▐▌ ▐▌ \n");
+	printf("╚═════════════════════════════════════════════════════════════════╝\n\n");
+
+}
+
+
+/**
+ *
+ * Esta função exibe uma barra de carregamento ou imprime o texto fornecido caractere por caractere
+ * com base no parâmetro flag_carregamento. Se flag_carregamento estiver definido, exibe uma barra de carregamento.
+ * Caso contrário, imprime o texto.
+ *
+ * @param texto Ponteiro para o texto a ser impresso. Se flag_carregamento estiver definido, este parâmetro pode ser NULL.
+ * @param tamanho O comprimento do texto a ser impresso ou o número de iterações para a barra de carregamento.
+ * @param flag_carregamento Flag para determinar o modo de operação. Se definido como 1, uma barra de carregamento é exibida.
+ *                          Se definido como 0, o texto é impresso caractere por caractere.
+ *
+ */
+void ft_carregamento(char *texto, size_t tamanho, int flag_carregamento) 
+{
+
+	if(!texto && !flag_carregamento)
+	{
+		printf("Parametro nome não pode ser NULL \n");
+		return;
+	}
+
+	if(flag_carregamento)
+    	printf("Carregando: [");
+	
+    for (int i = 0; i < tamanho; i++) 
+	{
+		if(flag_carregamento)
+		{	
+			printf("■");
+			fflush(stdout);
+        	usleep(50000);
+		}
+		else
+        {	
+			printf("%c", texto[i]);
+			fflush(stdout);
+			usleep(3000);
+		}
+    }
+
+	if(flag_carregamento)
+   	{	
+		printf(" ] ✔");
+		sleep(1);
+	}
+	else
+		printf("\n");
+}                                                                                          
+
+/**
+ *
+ * Esta função imprime um banner decorativo no console, que inclui
+ * o nome da equipa e alguns elementos gráficos.
+ */
+void ft_banner_team()
+{
+	printf("╔═════════════════════════════════════════════════════════╗\n");
+	printf("║                                                         ║ \n");
+	printf("║   ████████ ███████  █████  ███    ███      ██ ███████   ║\n");
+	printf("║      ██    ██      ██   ██ ████  ████     ███ ██        ║\n");
+	printf("║      ██    █████   ███████ ██ ████ ██      ██ ███████   ║\n");
+	printf("║      ██    ██      ██   ██ ██  ██  ██      ██      ██   ║\n");
+	printf("║      ██    ███████ ██   ██ ██      ██      ██ ███████   ║\n");
+	printf("║                                                         ║ \n");
+	printf("╠═════════════════════════════════════════════════════════╣\n");
+}        
+
+/**
+ * 
+ * Esta função limpa a tela, imprime uma moldura decorativa com texto dentro,
+ * mostra uma barra de carregamento e espera que o usuário pressione Enter.
+ * 
+ * O texto exibido inclui:
+ * - Uma borda superior e inferior feita de caracteres especiais.
+ * - Um texto decorativo no meio.
+ * 
+ * A função chama as seguintes funções auxiliares:
+ * - ft_clear_screen(): Limpa a tela do terminal.
+ * - ft_barra_carregamento(): Exibe uma barra de carregamento.
+ * - ft_wait_enter(): Espera que o usuário pressione a tecla Enter.
+ */                                                    
+void ft_mostrar_apresentação()
+{	
+	char *nomes[] = {
+		"║ Henrique Veríssimo (53717)                              ║",
+		"║ Ana Moreira (53676)                                     ║",
+		"║ Martim Afonso (55201)                                   ║",
+		"║ Maria Terrinha (54321)                                  ║",
+		"║ Afonso Paraíba (54584)                                  ║",
+		"║ Tomé Pedro (53702)                                      ║"
+	};
+
+	ft_clear_screen();
+	ft_banner_team();
+
+	printf("║ Membros:                                                ║\n");
+	printf("║                                                         ║\n");
+	for(int i = 0; i < 6; i++)
+		ft_carregamento(nomes[i], strlen(nomes[i]), 0);
+	printf("╚═════════════════════════════════════════════════════════╝\n");
+	ft_carregamento(NULL, 20, 1);
+	ft_wait_enter();
+
+}
 /**
  * Exibe o menu principal com várias opções e solicita ao usuário que selecione uma.
  *
@@ -18,9 +139,9 @@
 int ft_menu(void)
 {
     int option;
-    printf("╔═════════════════════════════════════════════════════════╗\n");
+	ft_banner_team();
     printf("╠════════════════════════  MENU  ═════════════════════════╣\n");
-    printf("║- [01] Construir uma matriz 4x18 a partir do vetor       ║\n");
+    printf("║- [01] Construir uma matriz 4x%d a partir do vetor       ║\n",N);
     printf("║- [02] Calcular o logoritmo de cada elemento do vetor    ║\n");
     printf("║- [03] Calcular a mediana do vetor                       ║\n");
     printf("║- [04] Ordenar os valores simétricos na ordem crescente  ║\n");
@@ -29,10 +150,10 @@ int ft_menu(void)
     printf("╠═════════════════════════════════════════════════════════╣\n");
     printf("╠═════════════════  FUNÇÕES ADICIONAIS  ══════════════════╣\n");
     printf("║- [07] Mostrar menu de ajuda                             ║\n");
-    printf("║- [08] Devolução vetor baralhado                         ║\n");
+    printf("║- [08] Devolução vetor baralhado com o vetor ordenado    ║\n");
     printf("║- [09] Decompor os números impares                       ║\n");
-    printf("║- [10] Devolução de uma matriz 18x18                     ║\n");
-    printf("║- [11] Matriz transposta da 18x18 criada                 ║\n");
+    printf("║- [10] Devolução de uma matriz %dx%d                     ║\n",N,N);
+    printf("║- [11] Matriz transposta da %dx%d criada                 ║\n",N,N);
     printf("║- [12] Sair                                              ║\n");
     printf("╚═════════════════════════════════════════════════════════╝\n");
 
@@ -275,16 +396,15 @@ int *ft_ler_vetor(int flag)
 {
 	int *vetor = (int *)malloc(sizeof(int) * N);
 	int i = -1;
-
 	if(!vetor)
     {
         printf("Erro na alocação do vetor!\n");
 		return (NULL);
     }
-
+	ft_banner_vetor();
 	if(flag)
 		printf("[NOVO VETOR]\n");
-	printf("Insira 18 valores inteiros compreendidos entre 1 e 11 inclusive\n");
+	printf("Insira %d valores inteiros compreendidos entre 1 e 11 inclusive\n", N);
     while (++i < N)
     {
         printf(">> ");
@@ -435,7 +555,7 @@ int *ft_return_metade_vetor(int *vetor)
 	int j = -1;
 	if(!metade_vetor || !vetor)
 		return NULL;
-	for(int i = (N/2)-1; i < N; i++)
+	for(int i = (N/2); i < N; i++)
 		metade_vetor[++j] = vetor[i];
 	
 	return (metade_vetor);
@@ -951,8 +1071,9 @@ void	ft_clean_input(void)
  *
  * @param opcao A opção do menu escolhida pelo usuário.
  * @param vetor Um vetor de inteiros a ser passado para as funções de opção.
+ * @param flag  Um inteiro para verificar se a opção 10 foi usada ou não (1 se foi, 0 se não foi)
  */
-void ft_exec_menu(int opcao, int vetor[N])
+void ft_exec_menu(int opcao, int vetor[N], int *flag)
 {
 	ft_clear_screen();
 	switch (opcao)
@@ -985,10 +1106,10 @@ void ft_exec_menu(int opcao, int vetor[N])
 		ft_option_nine(vetor);
 		break;
 	case 10:
-		ft_option_ten(vetor);
+		ft_option_ten(vetor, flag);
 		break;
 	case 11:
-		ft_option_eleven(vetor);
+		ft_option_eleven(vetor, flag);
 		break;
 	default:
 		break;
@@ -1327,7 +1448,7 @@ void ft_option_eight(int vetor[N])
 
 	if(!vetores)
 		return;
-	
+	ft_clear_screen();
 	printf("╔════════════════════════════════════════════════════════╗\n");
     printf("║                   VETOR BARALHADO                      ║\n");
 	printf("╠════════════════════════════════════════════════════════╣\n");
@@ -1462,8 +1583,9 @@ void ft_option_nine(int vetor[N])
  * 3. Limpa a tela e imprime o vetor inicial, o vetor ordenado e a matriz resultante.
  *
  * @param vetor O vetor de entrada de inteiros com tamanho N.
+ * @param flag Um inteiro para mudar o valor quando esta função é usada
  */
-void ft_option_ten(int vetor[N])
+void ft_option_ten(int vetor[N], int *flag)
 {
 	int *vetor_ordenado = ft_vetor_ordenado_crescente(vetor, 0);
 	if (!vetor_ordenado)
@@ -1476,8 +1598,10 @@ void ft_option_ten(int vetor[N])
 	int spaces = 108 - (37 + ft_check_digits(vetor, N));
 
 	ft_clear_screen();
+	*flag = 1; 
+
 	printf("╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════╗\n");
-	printf("║                                            MATRIZ 18X18                                                     ║\n");
+	printf("║                                            MATRIZ %dx%d                                                     ║\n", N,N);
 	printf("╠═════════════════════════════════════════════════════════════════════════════════════════════════════════════╣\n");
 	printf("║                                                                                                             ║\n");
 	printf("║  ↓ VETOR INCIAL ↓                                                                                           ║\n");
@@ -1518,8 +1642,13 @@ void ft_option_ten(int vetor[N])
  * @param vetor O vetor de entrada de inteiros de tamanho N.
  *
  */
-void ft_option_eleven(int vetor[N])
+void ft_option_eleven(int vetor[N], int *flag)
 {
+	if(!(*flag))
+	{
+		printf("Matriz não existe por favor use primeiro a opção 10\n");
+		return;
+	}
 	int *vetor_ordenado = ft_vetor_ordenado_crescente(vetor, 0);
 	if (!vetor_ordenado)
 		return;

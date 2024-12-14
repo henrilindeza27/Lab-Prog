@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['guia_20de_20uso_94',['Guia de Uso',['../usage.html',1,'index']]]
+  ['instalação_102',['Instalação',['../instalacao.html',1,'']]]
 ];

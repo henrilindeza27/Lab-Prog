@@ -1,7 +1,7 @@
 NAME_PROJECT = lp-team-15
 
 SRCS = $(wildcard *.c)
-
+CC = cc
 OBJS = $(SRCS:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
@@ -14,11 +14,11 @@ all: $(NAME_PROJECT)
 
 $(NAME_PROJECT): $(OBJS)
 
-	@cc $(FLAGS) $(OBJS) -o $(NAME_PROJECT) -lm 
+	@$(CC) $(FLAGS) $(OBJS) -o $(NAME_PROJECT) -lm 
 	@echo  "$(CYAN)Build ($(NAME_PROJECT)): $(GREEN)[Success]$(RESET)"
 
 %.o: %.c
-	@cc -c $< -o $@
+	@$(CC) -c $< -o $@
 
 clean:
 	@rm -f $(OBJS)
@@ -31,7 +31,7 @@ re: fclean all
 
 #Compila e executa o programa
 exec:
-	@make && clear && ./$(NAME_PROJECT)
+	@make re && clear && ./$(NAME_PROJECT)
 
 #Recompila e executa o programa com o valgrind
 rv:

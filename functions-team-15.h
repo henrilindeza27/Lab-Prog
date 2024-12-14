@@ -8,15 +8,15 @@
 #include <math.h>
 #include <ctype.h>
 #include <time.h>
-#include <signal.h>
+#include <unistd.h>
 
 #define N 18
 
-
+void ft_mostrar_apresentação();
 int ft_menu(void);
 void ft_ajuda_cmd(void);
 void ft_ajuda(void);
-void ft_exec_menu(int opcao, int vetor[N]);
+void ft_exec_menu(int opcao, int vetor[N], int *flag);
 
 void ft_wait_enter(void);
 void ft_clear_screen(void);
@@ -53,8 +53,8 @@ void ft_option_five(int vetor[N]);
 void ft_option_six(int vetor[N]);
 void ft_option_eight(int vetor[N]);
 void ft_option_nine(int vetor[N]);
-void ft_option_ten(int vetor[N]);
-void ft_option_eleven(int vetor[N]);
+void ft_option_ten(int vetor[N], int *flag);
+void ft_option_eleven(int vetor[N], int *flag);
 
 
 
