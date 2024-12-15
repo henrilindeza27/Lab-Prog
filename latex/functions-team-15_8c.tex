@@ -11,13 +11,15 @@ Include dependency graph for functions-\/team-\/15.c\+:\nopagebreak
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{functions-team-15_8c_a84092888c6c67c9908883673a2dc2f5f}{ft\+\_\+banner\+\_\+vetor}} ()
+void \mbox{\hyperlink{functions-team-15_8c_aee1ba9fb46e388c831771bfd5ee120ee}{ft\+\_\+banner\+\_\+vetor}} (void)
+\item 
+void \mbox{\hyperlink{functions-team-15_8c_ad919ff7ceb267e52bbe107722fda5fc0}{ft\+\_\+final\+\_\+banner}} (void)
+\item 
+void \mbox{\hyperlink{functions-team-15_8c_a8eda68242b60624325056d19a092bd2d}{ft\+\_\+banner\+\_\+team}} (void)
 \item 
 void \mbox{\hyperlink{functions-team-15_8c_a61f5c9622fea29e687a3c422beaa4d4b}{ft\+\_\+carregamento}} (char $\ast$texto, size\+\_\+t tamanho, int flag\+\_\+carregamento)
 \item 
-void \mbox{\hyperlink{functions-team-15_8c_aa63ff57d5ca7e5b7c84dd8f87df89138}{ft\+\_\+banner\+\_\+team}} ()
-\item 
-void \mbox{\hyperlink{functions-team-15_8c_a452cebaa4fce9e32f11dc3cf499ce86c}{ft\+\_\+mostrar\+\_\+apresentação}} ()
+void \mbox{\hyperlink{functions-team-15_8c_a9cd7b35d8f8827ca9b15a370abf09b41}{ft\+\_\+mostrar\+\_\+apresentação}} (void)
 \item 
 int \mbox{\hyperlink{functions-team-15_8c_a837d466412a485e01631738b0382c72d}{ft\+\_\+menu}} (void)
 \item 
@@ -57,7 +59,7 @@ int $\ast$$\ast$ \mbox{\hyperlink{functions-team-15_8c_a1c7abd7495e4de5dce4a1313
 \item 
 void \mbox{\hyperlink{functions-team-15_8c_a765b72dadda38dc578a2027b7019fda6}{ft\+\_\+ajuda}} (void)
 \item 
-void \mbox{\hyperlink{functions-team-15_8c_a52bcca4426a266feee9e90d069037bff}{ft\+\_\+ajuda\+\_\+cmd}} ()
+void \mbox{\hyperlink{functions-team-15_8c_a45be831e9da5816492ae45069d024050}{ft\+\_\+ajuda\+\_\+cmd}} (void)
 \item 
 void \mbox{\hyperlink{functions-team-15_8c_a5e948defd8f97587ed7df2ebc9f752b3}{ft\+\_\+free\+\_\+matriz}} (int $\ast$$\ast$matriz, int linhas)
 \item 
@@ -72,6 +74,8 @@ void \mbox{\hyperlink{functions-team-15_8c_a56eeaa46c2fbdfc228695d7fe1659f93}{ft
 void \mbox{\hyperlink{functions-team-15_8c_aa79c1d0ef22f3ae5ebfe3953e111fea8}{ft\+\_\+wait\+\_\+enter}} (void)
 \item 
 void \mbox{\hyperlink{functions-team-15_8c_adc1a96b70105600c27747608a34bc6cb}{ft\+\_\+clear\+\_\+screen}} (void)
+\item 
+int \mbox{\hyperlink{functions-team-15_8c_a9dd136f44074c9656fcb652d55ac0b38}{ft\+\_\+check\+\_\+number\+\_\+size}} (int num)
 \item 
 int \mbox{\hyperlink{functions-team-15_8c_aac816163081f80e503cd1b3c63f836ef}{ft\+\_\+check\+\_\+digits}} (int vetor\mbox{[}\mbox{\hyperlink{functions-team-15_8h_a0240ac851181b84ac374872dc5434ee4}{N}}\mbox{]}, int size)
 \item 
@@ -101,7 +105,7 @@ void \mbox{\hyperlink{functions-team-15_8c_aa3aeaa29aab07eb736e7d5a02803f1df}{ft
 
 \doxysubsection{Detailed Description}
 \begin{DoxyAuthor}{Author}
-Henrique Verissiomo / Martim Afonso / Afonso Paraíba / Maria Terrinha / Tomé Pedro / Ana Amoreira 
+Henrique Veríssimo / Martim Afonso / Afonso Paraíba / Maria Terrinha / Tomé Pedro / Ana Amoreira 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
 1.\+0 
@@ -145,7 +149,7 @@ Funções Adicionais\+:
 \item \mbox{[}12\mbox{]} Sair do Programa.
 \end{DoxyItemize}
 
-O menu de ajuda é exibido em um formato visualmente agradável, utilizando caracteres especiais para criar bordas e seções. \mbox{\Hypertarget{functions-team-15_8c_a52bcca4426a266feee9e90d069037bff}\label{functions-team-15_8c_a52bcca4426a266feee9e90d069037bff}} 
+O menu de ajuda é exibido em um formato visualmente agradável, utilizando caracteres especiais para criar bordas e seções. \mbox{\Hypertarget{functions-team-15_8c_a45be831e9da5816492ae45069d024050}\label{functions-team-15_8c_a45be831e9da5816492ae45069d024050}} 
 \index{functions-\/team-\/15.c@{functions-\/team-\/15.c}!ft\_ajuda\_cmd@{ft\_ajuda\_cmd}}
 \index{ft\_ajuda\_cmd@{ft\_ajuda\_cmd}!functions-\/team-\/15.c@{functions-\/team-\/15.c}}
 \doxysubsubsection{\texorpdfstring{ft\_ajuda\_cmd()}{ft\_ajuda\_cmd()}}
@@ -153,17 +157,17 @@ O menu de ajuda é exibido em um formato visualmente agradável, utilizando cara
 
 Exibe a ajuda básica do programa.
 
-Esta função imprime instruções detalhadas sobre como executar o programa, navegar pelo menu, fornecer entrada de dados, dicas úteis e como encerrar o programa. As instruções são exibidas em um formato de caixa ASCII para facilitar a leitura e a compreensão. \mbox{\Hypertarget{functions-team-15_8c_aa63ff57d5ca7e5b7c84dd8f87df89138}\label{functions-team-15_8c_aa63ff57d5ca7e5b7c84dd8f87df89138}} 
+Esta função imprime instruções detalhadas sobre como executar o programa, navegar pelo menu, fornecer entrada de dados, dicas úteis e como encerrar o programa. As instruções são exibidas em um formato de caixa ASCII para facilitar a leitura e a compreensão. \mbox{\Hypertarget{functions-team-15_8c_a8eda68242b60624325056d19a092bd2d}\label{functions-team-15_8c_a8eda68242b60624325056d19a092bd2d}} 
 \index{functions-\/team-\/15.c@{functions-\/team-\/15.c}!ft\_banner\_team@{ft\_banner\_team}}
 \index{ft\_banner\_team@{ft\_banner\_team}!functions-\/team-\/15.c@{functions-\/team-\/15.c}}
 \doxysubsubsection{\texorpdfstring{ft\_banner\_team()}{ft\_banner\_team()}}
-{\footnotesize\ttfamily void ft\+\_\+banner\+\_\+team (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void ft\+\_\+banner\+\_\+team (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-Esta função imprime um banner decorativo no console, que inclui o nome da equipa e alguns elementos gráficos. \mbox{\Hypertarget{functions-team-15_8c_a84092888c6c67c9908883673a2dc2f5f}\label{functions-team-15_8c_a84092888c6c67c9908883673a2dc2f5f}} 
+Esta função imprime um banner decorativo no console, que inclui o nome da equipa e alguns elementos gráficos. \mbox{\Hypertarget{functions-team-15_8c_aee1ba9fb46e388c831771bfd5ee120ee}\label{functions-team-15_8c_aee1ba9fb46e388c831771bfd5ee120ee}} 
 \index{functions-\/team-\/15.c@{functions-\/team-\/15.c}!ft\_banner\_vetor@{ft\_banner\_vetor}}
 \index{ft\_banner\_vetor@{ft\_banner\_vetor}!functions-\/team-\/15.c@{functions-\/team-\/15.c}}
 \doxysubsubsection{\texorpdfstring{ft\_banner\_vetor()}{ft\_banner\_vetor()}}
-{\footnotesize\ttfamily void ft\+\_\+banner\+\_\+vetor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void ft\+\_\+banner\+\_\+vetor (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 Esta função imprime um banner com um design decorativo de vetor no console. \mbox{\Hypertarget{functions-team-15_8c_a61f5c9622fea29e687a3c422beaa4d4b}\label{functions-team-15_8c_a61f5c9622fea29e687a3c422beaa4d4b}} 
 \index{functions-\/team-\/15.c@{functions-\/team-\/15.c}!ft\_carregamento@{ft\_carregamento}}
@@ -188,23 +192,18 @@ Esta função exibe uma barra de carregamento ou imprime o texto fornecido carac
 \doxysubsubsection{\texorpdfstring{ft\_check\_digits()}{ft\_check\_digits()}}
 {\footnotesize\ttfamily int ft\+\_\+check\+\_\+digits (\begin{DoxyParamCaption}\item[{int}]{vetor\mbox{[}\+N\mbox{]},  }\item[{int}]{size }\end{DoxyParamCaption})}
 
-Verifica a quantidade de elementos no vetor que possuem dois ou três dígitos.
-
-Esta função itera pelo vetor fornecido e conta a quantidade de caracters a mais do que um número com 1 dígito. Se um elemento possui dois dígitos (ou seja, entre 10 e 99 inclusive), incrementa o contador em 1. Se um elemento possui três ou mais dígitos (ou seja, 100 ou mais), incrementa o contador em 2.
+Esta função itera através do vetor fornecido e verifica o número de dígitos em cada elemento que é maior ou igual a 10. Utiliza a função auxiliar {\ttfamily ft\+\_\+check\+\_\+number\+\_\+size} para determinar o número de dígitos em cada elemento e soma-\/os.
 
 
 \begin{DoxyParams}{Parameters}
-{\em vetor} & O vetor de inteiros a ser verificado. \\
+{\em vetor} & O array de inteiros a ser verificado. \\
 \hline
-{\em size} & O tamanho do vetor. \\
+{\em size} & O tamanho do array. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A quantidade de dígitos a mais do que um número de 1 dígito
+O número total de dígitos nos elementos do array que são maiores ou iguais a 10. 
 \end{DoxyReturn}
-\begin{DoxyNote}{Note}
-Esta função é importante para garantir que o resultado saía sempre formatado na tela 
-\end{DoxyNote}
 \mbox{\Hypertarget{functions-team-15_8c_a8b864791002f7c7673cd04992ed7ff37}\label{functions-team-15_8c_a8b864791002f7c7673cd04992ed7ff37}} 
 \index{functions-\/team-\/15.c@{functions-\/team-\/15.c}!ft\_check\_impar@{ft\_check\_impar}}
 \index{ft\_check\_impar@{ft\_check\_impar}!functions-\/team-\/15.c@{functions-\/team-\/15.c}}
@@ -222,6 +221,22 @@ Esta função percorre um {\ttfamily vetor de inteiros} e conta quantos deles s�
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 A quantidade de números {\ttfamily ímpares} no vetor. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{functions-team-15_8c_a9dd136f44074c9656fcb652d55ac0b38}\label{functions-team-15_8c_a9dd136f44074c9656fcb652d55ac0b38}} 
+\index{functions-\/team-\/15.c@{functions-\/team-\/15.c}!ft\_check\_number\_size@{ft\_check\_number\_size}}
+\index{ft\_check\_number\_size@{ft\_check\_number\_size}!functions-\/team-\/15.c@{functions-\/team-\/15.c}}
+\doxysubsubsection{\texorpdfstring{ft\_check\_number\_size()}{ft\_check\_number\_size()}}
+{\footnotesize\ttfamily int ft\+\_\+check\+\_\+number\+\_\+size (\begin{DoxyParamCaption}\item[{int}]{num }\end{DoxyParamCaption})}
+
+Esta função calcula o número de dígitos no inteiro fornecido {\ttfamily num} dividindo repetidamente o número por 10 até que seja menor que 10.
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & O inteiro cujo número de dígitos deve ser calculado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+O número de dígitos no inteiro fornecido. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{functions-team-15_8c_a20800d7981fa67da03c4b01a2f8c895d}\label{functions-team-15_8c_a20800d7981fa67da03c4b01a2f8c895d}} 
 \index{functions-\/team-\/15.c@{functions-\/team-\/15.c}!ft\_clean\_input@{ft\_clean\_input}}
@@ -276,7 +291,15 @@ Esta função limpa a tela, executa a função correspondente com base na escolh
 {\em flag} & Um inteiro para verificar se a opção 10 foi usada ou não (1 se foi, 0 se não foi) \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{functions-team-15_8c_a5e948defd8f97587ed7df2ebc9f752b3}\label{functions-team-15_8c_a5e948defd8f97587ed7df2ebc9f752b3}} 
+\mbox{\Hypertarget{functions-team-15_8c_ad919ff7ceb267e52bbe107722fda5fc0}\label{functions-team-15_8c_ad919ff7ceb267e52bbe107722fda5fc0}} 
+\index{functions-\/team-\/15.c@{functions-\/team-\/15.c}!ft\_final\_banner@{ft\_final\_banner}}
+\index{ft\_final\_banner@{ft\_final\_banner}!functions-\/team-\/15.c@{functions-\/team-\/15.c}}
+\doxysubsubsection{\texorpdfstring{ft\_final\_banner()}{ft\_final\_banner()}}
+{\footnotesize\ttfamily void ft\+\_\+final\+\_\+banner (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Esta função limpa a tela e imprime um banner final com arte ASCII. O banner inclui um texto decorativo e uma mensagem de agradecimento.
+
+A função usa a função {\ttfamily ft\+\_\+clear\+\_\+screen} para limpar a tela antes de imprimir o banner. \mbox{\Hypertarget{functions-team-15_8c_a5e948defd8f97587ed7df2ebc9f752b3}\label{functions-team-15_8c_a5e948defd8f97587ed7df2ebc9f752b3}} 
 \index{functions-\/team-\/15.c@{functions-\/team-\/15.c}!ft\_free\_matriz@{ft\_free\_matriz}}
 \index{ft\_free\_matriz@{ft\_free\_matriz}!functions-\/team-\/15.c@{functions-\/team-\/15.c}}
 \doxysubsubsection{\texorpdfstring{ft\_free\_matriz()}{ft\_free\_matriz()}}
@@ -405,11 +428,11 @@ Esta função imprime o menu principal com várias opções para o usuário esco
 \begin{DoxyReturn}{Returns}
 A opção de menu selecionada (um inteiro entre 1 e 12). 
 \end{DoxyReturn}
-\mbox{\Hypertarget{functions-team-15_8c_a452cebaa4fce9e32f11dc3cf499ce86c}\label{functions-team-15_8c_a452cebaa4fce9e32f11dc3cf499ce86c}} 
+\mbox{\Hypertarget{functions-team-15_8c_a9cd7b35d8f8827ca9b15a370abf09b41}\label{functions-team-15_8c_a9cd7b35d8f8827ca9b15a370abf09b41}} 
 \index{functions-\/team-\/15.c@{functions-\/team-\/15.c}!ft\_mostrar\_apresentação@{ft\_mostrar\_apresentação}}
 \index{ft\_mostrar\_apresentação@{ft\_mostrar\_apresentação}!functions-\/team-\/15.c@{functions-\/team-\/15.c}}
 \doxysubsubsection{\texorpdfstring{ft\_mostrar\_apresentação()}{ft\_mostrar\_apresentação()}}
-{\footnotesize\ttfamily void ft\+\_\+mostrar\+\_\+apresentação (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void ft\+\_\+mostrar\+\_\+apresentação (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 Esta função limpa a tela, imprime uma moldura decorativa com texto dentro, mostra uma barra de carregamento e espera que o usuário pressione Enter.
 

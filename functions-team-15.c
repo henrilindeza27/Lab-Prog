@@ -1,6 +1,6 @@
 /**
  * @file    functions-team-15.c
- * @author  Henrique Verissiomo / Martim Afonso / Afonso Paraíba / Maria Terrinha / Tomé Pedro / Ana Amoreira
+ * @author  Henrique Veríssimo / Martim Afonso / Afonso Paraíba / Maria Terrinha / Tomé Pedro / Ana Amoreira
  * @version 1.0
  */
 
@@ -11,7 +11,7 @@
  *
  * Esta função imprime um banner com um design decorativo de vetor no console.
  */
-void ft_banner_vetor()
+void ft_banner_vetor(void)
 {
 	printf("╔═════════════════════════════════════════════════════════════════╗\n");
 	printf(" ▗▄▄▄▖▗▖  ▗▖ ▗▄▄▖▗▄▄▄▖▗▄▄▖ ▗▄▄▄▖▗▄▄▖     ▗▖  ▗▖▗▄▄▄▖▗▄▄▄▖▗▄▖ ▗▄▄▖  \n");
@@ -22,6 +22,59 @@ void ft_banner_vetor()
 
 }
 
+/**
+ * 
+ * Esta função limpa a tela e imprime um banner final com arte ASCII.
+ * O banner inclui um texto decorativo e uma mensagem de agradecimento.
+ * 
+ * A função usa a função `ft_clear_screen` para limpar a tela antes
+ * de imprimir o banner.
+ */
+void ft_final_banner(void)
+{
+	ft_clear_screen();
+	printf(
+        "▗▄▄▖ ▗▄▄▖  ▗▄▖  ▗▄▄▖▗▄▄▖  ▗▄▖ ▗▖  ▗▖ ▗▄▖     ▗▄▄▄▖▗▖  ▗▖ ▗▄▄▖▗▄▄▄▖▗▄▄▖ ▗▄▄▖  ▗▄▖ ▗▄▄▄  ▗▄▖ \n"
+        "▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌   ▐▌ ▐▌▐▌ ▐▌▐▛▚▞▜▌▐▌ ▐▌    ▐▌   ▐▛▚▖▐▌▐▌   ▐▌   ▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌  █▐▌ ▐▌\n"
+        "▐▛▀▘ ▐▛▀▚▖▐▌ ▐▌▐▌▝▜▌▐▛▀▚▖▐▛▀▜▌▐▌  ▐▌▐▛▀▜▌    ▐▛▀▀▘▐▌ ▝▜▌▐▌   ▐▛▀▀▘▐▛▀▚▖▐▛▀▚▖▐▛▀▜▌▐▌  █▐▌ ▐▌\n"
+        "▐▌   ▐▌ ▐▌▝▚▄▞▘▝▚▄▞▘▐▌ ▐▌▐▌ ▐▌▐▌  ▐▌▐▌ ▐▌    ▐▙▄▄▖▐▌  ▐▌▝▚▄▄▖▐▙▄▄▖▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▙▄▄▀▝▚▄▞▘\n\n\n"
+    );
+	 printf(
+        "         _nnnn_                      \n"
+        "        dGGGGMMb     ,\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".\n"
+        "       @p~qp~~qMb    | Obrigado por usar! |\n"
+        "       M|@||@) M|   _;....................'\n"
+        "       @,----.JM| -'\n"
+        "      JS^\\__/  qKL\n"
+        "     dZP        qKRb\n"
+        "    dZP          qKKb\n"
+        "   fZP            SMMb\n"
+        "   HZM            MMMM\n"
+        "   FqM            MMMM\n"
+        " __| \".        |\\dS\"qML\n"
+        " |    `.       | `' \\Zq\n"
+        " _)      \\.__.,|     .'\n"
+        "\\____   )MMMMMM|   .'\n"
+        "     `-'       `--' \n"
+    );
+}
+/**
+ *
+ * Esta função imprime um banner decorativo no console, que inclui
+ * o nome da equipa e alguns elementos gráficos.
+ */
+void ft_banner_team(void)
+{
+	printf("╔═════════════════════════════════════════════════════════╗\n");
+	printf("║                                                         ║ \n");
+	printf("║   ████████ ███████  █████  ███    ███      ██ ███████   ║\n");
+	printf("║      ██    ██      ██   ██ ████  ████     ███ ██        ║\n");
+	printf("║      ██    █████   ███████ ██ ████ ██      ██ ███████   ║\n");
+	printf("║      ██    ██      ██   ██ ██  ██  ██      ██      ██   ║\n");
+	printf("║      ██    ███████ ██   ██ ██      ██      ██ ███████   ║\n");
+	printf("║                                                         ║ \n");
+	printf("╠═════════════════════════════════════════════════════════╣\n");
+}        
 
 /**
  *
@@ -59,36 +112,19 @@ void ft_carregamento(char *texto, size_t tamanho, int flag_carregamento)
         {	
 			printf("%c", texto[i]);
 			fflush(stdout);
-			usleep(3000);
+			usleep(2000);
 		}
     }
 
 	if(flag_carregamento)
    	{	
 		printf(" ] ✔");
-		sleep(1);
+		usleep(500000);
 	}
 	else
 		printf("\n");
 }                                                                                          
 
-/**
- *
- * Esta função imprime um banner decorativo no console, que inclui
- * o nome da equipa e alguns elementos gráficos.
- */
-void ft_banner_team()
-{
-	printf("╔═════════════════════════════════════════════════════════╗\n");
-	printf("║                                                         ║ \n");
-	printf("║   ████████ ███████  █████  ███    ███      ██ ███████   ║\n");
-	printf("║      ██    ██      ██   ██ ████  ████     ███ ██        ║\n");
-	printf("║      ██    █████   ███████ ██ ████ ██      ██ ███████   ║\n");
-	printf("║      ██    ██      ██   ██ ██  ██  ██      ██      ██   ║\n");
-	printf("║      ██    ███████ ██   ██ ██      ██      ██ ███████   ║\n");
-	printf("║                                                         ║ \n");
-	printf("╠═════════════════════════════════════════════════════════╣\n");
-}        
 
 /**
  * 
@@ -104,7 +140,7 @@ void ft_banner_team()
  * - ft_barra_carregamento(): Exibe uma barra de carregamento.
  * - ft_wait_enter(): Espera que o usuário pressione a tecla Enter.
  */                                                    
-void ft_mostrar_apresentação()
+void ft_mostrar_apresentação(void)
 {	
 	char *nomes[] = {
 		"║ Henrique Veríssimo (53717)                              ║",
@@ -953,7 +989,7 @@ void ft_ajuda(void)
  * o programa. As instruções são exibidas em um formato de caixa ASCII para
  * facilitar a leitura e a compreensão.
  */
-void ft_ajuda_cmd()
+void ft_ajuda_cmd(void)
 {
     printf("╔═══════════════════════════════════════════════════════════════════╗\n");
     printf("╠═══════════════════════  AJUDA BÁSICA  ════════════════════════════╣\n");
@@ -1161,28 +1197,47 @@ void ft_clear_screen(void)
 }
 
 /**
- *  Verifica a quantidade de elementos no vetor que possuem dois ou três dígitos.
  *
- * Esta função itera pelo vetor fornecido e conta a quantidade de caracters a mais do que um número com 1 dígito.
- * Se um elemento possui dois dígitos (ou seja, entre 10 e 99 inclusive),
- * incrementa o contador em 1. Se um elemento possui três ou mais dígitos (ou seja, 100 ou mais),
- * incrementa o contador em 2.
+ * Esta função calcula o número de dígitos no inteiro fornecido `num`
+ * dividindo repetidamente o número por 10 até que seja menor que 10.
  *
- * @param vetor O vetor de inteiros a ser verificado.
- * @param size O tamanho do vetor.
- * @return A quantidade de dígitos a mais do que um número de 1 dígito
- * 
- * @note Esta função é importante para garantir que o resultado saía sempre formatado na tela
+ * @param num O inteiro cujo número de dígitos deve ser calculado.
+ * @return O número de dígitos no inteiro fornecido.
+ */
+int ft_check_number_size(int num)
+{
+	int zeros = 0;
+
+    while (num >= 10)
+    {
+        if(num / 10 != 0)
+        {
+            zeros++;
+            num /= 10;
+        }
+    }
+    return (zeros);
+}
+
+/**
+ *
+ * Esta função itera através do vetor fornecido e verifica o número de dígitos
+ * em cada elemento que é maior ou igual a 10. Utiliza a função auxiliar
+ * `ft_check_number_size` para determinar o número de dígitos em cada elemento e 
+ * soma-os.
+ *
+ * @param vetor O array de inteiros a ser verificado.
+ * @param size O tamanho do array.
+ * @return O número total de dígitos nos elementos do array que são maiores ou iguais a 10.
  */
 int ft_check_digits(int vetor[N], int size)
 {
+	
 	int chars = 0;
 	for(int i = 0; i < size; i++)
 	{	
-		if(vetor[i] >= 10 && vetor[i] < 100)
-			chars++;
-		else if(vetor[i] >= 100)
-			chars += 2;
+		if(vetor[i] >= 10)
+			chars += ft_check_number_size(vetor[i]);
 	}
 	return (chars);
 }
@@ -1221,7 +1276,7 @@ void ft_option_one(int vetor[N])
 		return;
 	ft_clear_screen();
 	printf("╔════════════════════════════════════════════════════════╗\n");
-    printf("║                 CONSTRUÇÃO MATRIZ 4X18                 ║\n");
+    printf("║                 CONSTRUÇÃO MATRIZ 4X%d                 ║\n", N);
 	printf("╠════════════════════════════════════════════════════════╣\n");
 	printf("║                                                        ║\n");
 	printf("║  ↓ VETOR INCIAL ↓                                      ║\n");

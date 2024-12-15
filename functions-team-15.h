@@ -10,9 +10,14 @@
 #include <time.h>
 #include <unistd.h>
 
-#define N 18
+#define N 18 // Tamanho do vetor a inserir
 
-void ft_mostrar_apresentação();
+void ft_banner_vetor(void);
+void ft_final_banner(void);
+void ft_banner_team(void);
+void ft_carregamento(char *texto, size_t tamanho, int flag_carregamento);
+void ft_mostrar_apresentação(void);
+
 int ft_menu(void);
 void ft_ajuda_cmd(void);
 void ft_ajuda(void);
@@ -23,6 +28,7 @@ void ft_clear_screen(void);
 void ft_clean_input(void);
 void ft_free_matriz(int **matriz, int linhas);
 
+int ft_check_number_size(int num);
 int ft_check_digits(int vetor[N], int size);
 
 int *ft_ler_vetor(int flag);
@@ -55,8 +61,6 @@ void ft_option_eight(int vetor[N]);
 void ft_option_nine(int vetor[N]);
 void ft_option_ten(int vetor[N], int *flag);
 void ft_option_eleven(int vetor[N], int *flag);
-
-
 
 
 #endif

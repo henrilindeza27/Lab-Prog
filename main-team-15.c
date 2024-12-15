@@ -1,6 +1,6 @@
 /**
  * @file    main-team-15.c
- * @author  Henrique Verissiomo / Martim Afonso / Afonso Paraíba / Maria Terrinha / Tomé Pedro / Ana Amoreira
+ * @author  Henrique Veríssimo / Martim Afonso / Afonso Paraíba / Maria Terrinha / Tomé Pedro / Ana Amoreira
  * @version 1.0
  */
 
@@ -8,9 +8,9 @@
 
 int	main(int argc, char **argv)
 {
-	int *vetor;
-    int option;
-	int flag = 0;
+	int *vetor; // Vetor que o utilizador vai inserir
+    int option; // Recebe a opção inserida no menu
+	int flag = 0; // Usada para controlar se a matriz na opção 10 foi criada
 	
 	if (argc == 2)
 	{
@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 		ft_exec_menu(option, vetor, &flag);
 		option = ft_menu();
 	}
-    
+    ft_final_banner();
 	free(vetor);
 
 	return (0);
