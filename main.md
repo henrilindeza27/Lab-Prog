@@ -45,31 +45,31 @@ Para utilizar o menu, siga estas instruções:
 
 ## Menu Principal
 
-[01] Construir matriz 4x18: Cria uma matriz 4x18 a partir de um vetor.
+- [01] Construir matriz 4x18: Cria uma matriz 4x18 a partir de um vetor.
 
-[02] Logaritmo do vetor: Calcula o logaritmo base 10 de cada elemento do vetor.
+- [02] Logaritmo do vetor: Calcula o logaritmo base 10 de cada elemento do vetor.
 
-[03] Mediana do vetor: Retorna a mediana do vetor inserido.
+- [03] Mediana do vetor: Retorna a mediana do vetor inserido.
 
-[04] Ordenar valores simétricos: Coloca o vetor com os valores simétricos e organiza em ordem crescente.
+- [04] Ordenar valores simétricos: Coloca o vetor com os valores simétricos e organiza em ordem crescente.
 
-[05] Valores > 2 divisíveis por 5: Filtra números maiores que 2 e múltiplos de 5.
+- [05] Valores > 2 divisíveis por 5: Filtra números maiores que 2 e múltiplos de 5.
 
-[06] Soma das metades: Soma os elementos correspondentes da 1ª e 2ª metade do vetor.
+- [06] Soma das metades: Soma os elementos correspondentes da 1ª e 2ª metade do vetor.
 
 ## Funções Adicionais
 
-[07] Ajuda: Exibe um guia de ajuda.
+- [07] Ajuda: Exibe um guia de ajuda.
 
-[08] Vetor baralhado: Embaralha os elementos do vetor.
+- [08] Vetor baralhado: Embaralha os elementos do vetor.
 
-[09] Decompor ímpares: Calcula os fatores primos de números ímpares no vetor.
+- [09] Decompor ímpares: Calcula os fatores primos de números ímpares no vetor.
 
-[10] Matriz 18x18: Gera uma matriz 18x18 preenchida com valores.
+- [10] Matriz 18x18: Gera uma matriz 18x18 preenchida com valores.
 
-[11] Transposta 18x18: Faz a matriz transposta da 18x18 gerada.
+- [11] Transposta 18x18: Faz a matriz transposta da 18x18 gerada.
 
-[12] Sair: Encerra o programa.
+- [12] Sair: Encerra o programa.
 
 ## Dicas Adicionais
 
